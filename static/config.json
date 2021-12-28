@@ -1,4 +1,8 @@
 {
+  "appwrite": {
+    "endpoint": "https://demo.appwrite.io/v1",
+    "projectId": "61cb694db9bea"
+  },
   "theme": {
     "projectName": "Topgaming",
     "projectLogo": "🎮"
@@ -66,7 +70,7 @@
       "name": "Settings",
       "id": "settings",
       "groupId": null,
-      "icon": "⚙",
+      "icon": "ℹ️",
       "description": "Basic configuration of the website."
     },
     {

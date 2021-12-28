@@ -1,6 +1,11 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
+import { AppwriteService } from '~/services/appwrite';
 
 export type ConfigType = {
+    appwrite: {
+        endpoint: string;
+        projectId: string;
+    }
     theme: {
         projectName: string,
         projectLogo: string
@@ -84,6 +89,7 @@ export const actions: ActionTree<RootState, RootState> = {
         // Load config JSON
         const config: ConfigType = await this.$axios.$get('/config.json');
         commit('SET_CONFIG', config);
+        AppwriteService.init(config);
 
         // Prepare menuTree
         const mapRecursion = (allGroups: any, currentGroup: any): any => {

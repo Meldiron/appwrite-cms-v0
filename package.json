@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@types/marked": "^4.0.1",
+    "appwrite": "^5.0.0",
     "axios": "^0.24.0",
     "core-js": "^3.15.1",
     "marked": "^4.0.8",
@@ -25,6 +27,7 @@
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
+    "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",

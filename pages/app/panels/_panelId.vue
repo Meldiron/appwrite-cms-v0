@@ -131,6 +131,9 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
+  layout: 'app',
+  middleware: ['userOnly'],
+
   data() {
     const panel = this.$store.state.config.config.panels.find(
       (p: any) => p.id === this.$route.params.panelId

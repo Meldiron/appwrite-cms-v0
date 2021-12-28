@@ -1,21 +1,21 @@
 <template>
   <div
     v-bind:class="level === 1 ? '' : 'pt-0'"
-    class="flex flex-col h-full py-2 space-y-2 overflow-y-auto text-sm"
+    class="flex flex-col h-full py-1 space-y-2 overflow-y-auto text-sm"
   >
     <nuxt-link
       :event="menuElement.isCategory ? '' : 'click'"
-      :to="'/panels/' + menuElement.id"
+      :to="'/app/panels/' + menuElement.id"
       v-for="menuElement in menuTree"
       :key="menuElement.id"
       class="flex flex-col space-y-3"
       v-bind:class="
-        menuElement.isCategoryOpened ? '' : 'max-h-[2.5rem] overflow-y-hidden'
+        menuElement.isCategoryOpened ? '' : 'max-h-[3rem] overflow-y-hidden'
       "
     >
       <div
         @click="onToggleCategory($event, menuElement)"
-        class="relative flex items-center justify-start p-2 px-3 space-x-3 rounded-md  menu-button text-slate-300"
+        class="relative flex items-center justify-start p-3 px-3 space-x-3 rounded-md  menu-button text-slate-300"
       >
         <div class="flex items-center justify-between w-full">
           <div class="flex items-center justify-start space-x-3">
