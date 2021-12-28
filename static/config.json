@@ -1,0 +1,101 @@
+{
+  "theme": {
+    "projectName": "Topgaming",
+    "projectLogo": "🎮"
+  },
+  "groups": [
+    {
+      "name": "Tournaments",
+      "id": "tournaments",
+      "parentGroupId": null,
+      "icon": "🏆",
+      "isOpenedByDefault": true
+    },
+    {
+      "name": "Fortnite",
+      "id": "fortnite",
+      "parentGroupId": "tournaments",
+      "icon": "🎮",
+      "isOpenedByDefault": true
+    },
+    {
+      "name": "CS:GO",
+      "id": "csgo",
+      "parentGroupId": "tournaments",
+      "icon": "🎮",
+      "isOpenedByDefault": false
+    },
+    {
+      "name": "Valorant",
+      "id": "valorant",
+      "parentGroupId": "tournaments",
+      "icon": "🎮",
+      "isOpenedByDefault": true
+    },
+    {
+      "name": "Userbase",
+      "id": "userbase",
+      "parentGroupId": null,
+      "icon": "👨‍👩‍👧‍👦",
+      "isOpenedByDefault": false
+    },
+    {
+      "name": "Copywriting",
+      "id": "copywriting",
+      "parentGroupId": null,
+      "icon": "🗞",
+      "isOpenedByDefault": true
+    }
+  ],
+  "panels": [
+    {
+      "name": "Static Pages",
+      "id": "staticPages",
+      "groupId": "copywriting",
+      "icon": "📄",
+      "description": "Create your own sub-pages."
+    },
+    {
+      "name": "Articles",
+      "id": "articles",
+      "groupId": "copywriting",
+      "icon": "✍",
+      "description": "Write articles for promotion and events."
+    },
+    {
+      "name": "Settings",
+      "id": "settings",
+      "groupId": null,
+      "icon": "⚙",
+      "description": "Basic configuration of the website."
+    },
+    {
+      "name": "Maintenance",
+      "id": "maintenance",
+      "groupId": null,
+      "icon": "🛠",
+      "description": "Toggle maintenance mode of the website."
+    },
+    {
+      "name": "Players",
+      "id": "players",
+      "groupId": "userbase",
+      "icon": "😡",
+      "description": "List of all registered players."
+    },
+    {
+      "name": "Teams",
+      "id": "teams",
+      "groupId": "userbase",
+      "icon": "🏉",
+      "description": "Teams that consists of players."
+    },
+    {
+      "name": "FT Hype Cup",
+      "id": "ftHypeCup",
+      "groupId": "fortnite",
+      "icon": "🏅",
+      "description": "Hype cup tournamnets."
+    }
+  ]
+}
