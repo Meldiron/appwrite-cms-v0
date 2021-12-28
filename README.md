@@ -1,19 +1,10 @@
-# AppwriteCMS
-
 ![Cover image](/static/cover.png)
 
-(intro)
+# AppwriteCMS
 
 Hey there 👋 This project is WIP. I do not plan to finish it before Appwrite 0.12 release. After that, it's all about my determination.
 
-![Logo](/static/logo.png)
-
-## Future update plan
-
-- Allow registration, probably, somehow
-- Permission management (team owners&members)
-- Dark theme
-- Modular auth&storage&data library to allow other backends
+(intro)
 
 ## Setup
 
@@ -24,6 +15,13 @@ Hey there 👋 This project is WIP. I do not plan to finish it before Appwrite 0
   - Editors team and proper permissions on collection&documents
   - Add platform
   - Custom domain on same root domain
+
+## Future update plan
+
+- Allow registration, probably, somehow
+- Permission management (team owners&members)
+- Dark theme
+- Modular auth&storage&data library to allow other backends
 
 ## Contributing
 

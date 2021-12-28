@@ -1,6 +1,6 @@
 const title = 'AppwriteCMS | Headless Admin Panel'
 const description =
-  'Prepare admin panels for your projects rapidly using Appwrite CMS, a headless CMS for any Appwrite project.'
+  'Prepare admin panels for your projects rapidly using AppwriteCMS, a headless CMS for any Appwrite project.'
 const cover =
   'https://raw.githubusercontent.com/Meldiron/appwrite-cms/master/static/cover.png'
 const url = undefined

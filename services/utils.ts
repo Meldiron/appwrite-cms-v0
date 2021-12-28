@@ -3,8 +3,8 @@ import { ConfigType } from "../store/config";
 export const Utils = {
     generateHead(config: ConfigType): any {
 
-        const title = config.theme.projectName + ' CMS | AppwriteCMS';
-        const description = 'Prepare admin panels for your projects rapidly using Appwrite CMS, a headless CMS for any Appwrite project.';
+        const title = config.theme.projectName + ' | AppwriteCMS';
+        const description = 'Prepare admin panels for your projects rapidly using AppwriteCMS, a headless CMS for any Appwrite project.';
         const cover = config.settings.hostname + "/cover.png";
         const url = config.settings.hostname;
 
