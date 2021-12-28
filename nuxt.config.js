@@ -38,17 +38,17 @@ export default {
         name: 'twitter:card',
         content: 'summary_large_image',
       },
-      {
-        hid: 'twitter:domain',
-        name: 'twitter:domain',
-        content: url
-          .split('http://')
-          .join('')
-          .split('https://')
-          .join('')
-          .split('/')
-          .join(''),
-      },
+      // {
+      //   hid: 'twitter:domain',
+      //   name: 'twitter:domain',
+      //   content: url
+      //     .split('http://')
+      //     .join('')
+      //     .split('https://')
+      //     .join('')
+      //     .split('/')
+      //     .join(''),
+      // },
       // { hid: 'twitter:url', name: 'twitter:url', content: url },
       { hid: 'twitter:title', name: 'twitter:title', content: title },
       {
