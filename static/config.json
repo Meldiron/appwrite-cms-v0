@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "hostname": "http://localhost:3000"
+  },
   "appwrite": {
     "endpoint": "https://demo.appwrite.io/v1",
     "projectId": "61cb694db9bea"

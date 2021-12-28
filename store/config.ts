@@ -2,6 +2,9 @@ import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { AppwriteService } from '~/services/appwrite';
 
 export type ConfigType = {
+    settings: {
+        hostname: string;
+    },
     appwrite: {
         endpoint: string;
         projectId: string;

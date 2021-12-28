@@ -191,6 +191,7 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { AppwriteService } from '~/services/appwrite'
+import { Utils } from '../services/utils'
 
 export default Vue.extend({
   middleware: ['loadConfig'],
@@ -229,9 +230,7 @@ export default Vue.extend({
     this.updatePanel()
   },
   head() {
-    return {
-      title: this.config.theme.projectName + ' CMS',
-    }
+    return Utils.generateHead(this.config)
   },
 })
 </script>

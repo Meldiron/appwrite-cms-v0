@@ -1,8 +1,12 @@
 # AppwriteCMS
 
+![Cover image](/static/cover.png)
+
 (intro)
 
 Hey there 👋 This project is WIP. I do not plan to finish it before Appwrite 0.12 release. After that, it's all about my determination.
+
+![Logo](/static/logo.png)
 
 ## Future update plan
 
