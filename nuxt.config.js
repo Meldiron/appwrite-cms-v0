@@ -3,7 +3,6 @@ const description =
   'Prepare admin panels for your projects rapidly using AppwriteCMS, a headless CMS for any Appwrite project.'
 const cover =
   'https://raw.githubusercontent.com/Meldiron/appwrite-cms/master/static/cover.png'
-const url = undefined
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode

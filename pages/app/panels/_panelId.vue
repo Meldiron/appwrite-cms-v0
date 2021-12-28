@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex items-center justify-start text-sm">
+    <div class="flex items-center justify-start text-md">
       <button class="px-6 py-3 bg-slate-900 text-slate-50 rounded-l-md">
         All Records
       </button>
@@ -15,42 +15,17 @@
         <tr>
           <th
             scope="col"
-            class="
-              px-6
-              py-3
-              text-xs
-              font-medium
-              tracking-wider
-              text-left
-              rounded-tl-md
-              text-slate-100
-            "
+            class="px-6 py-3 text-sm font-medium tracking-wider text-left  rounded-tl-md text-slate-100"
           ></th>
           <th
             scope="col"
-            class="
-              px-6
-              py-3
-              text-xs
-              font-medium
-              tracking-wider
-              text-left text-slate-100
-            "
+            class="px-6 py-3 text-sm font-medium tracking-wider text-left  text-slate-100"
           >
             Name
           </th>
           <th
             scope="col"
-            class="
-              px-6
-              py-3
-              text-xs
-              font-medium
-              tracking-wider
-              text-left
-              rounded-tr-md
-              text-slate-100
-            "
+            class="px-6 py-3 text-sm font-medium tracking-wider text-left  rounded-tr-md text-slate-100"
           >
             Title
           </th>
@@ -60,19 +35,7 @@
         <tr class="bg-white">
           <td>
             <div
-              class="
-                flex
-                items-center
-                justify-center
-                w-6
-                h-6
-                m-2
-                text-white
-                border-2
-                rounded-md
-                border-slate-800
-                bg-slate-800
-              "
+              class="flex items-center justify-center w-6 h-6 m-2 text-white border-2 rounded-md  border-slate-800 bg-slate-800"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,133 +54,11 @@
             </div>
           </td>
           <td
-            class="
-              px-6
-              py-4
-              text-sm
-              font-medium
-              whitespace-nowrap
-              text-slate-900
-            "
+            class="px-6 py-4 font-medium  text-md whitespace-nowrap text-slate-900"
           >
             Cody Fisher
           </td>
-          <td class="px-6 py-4 text-sm whitespace-nowrap text-slate-500">
-            Product Directives Officer
-          </td>
-        </tr>
-
-        <tr class="bg-slate-100">
-          <td>
-            <div
-              class="
-                flex
-                items-center
-                justify-center
-                w-6
-                h-6
-                m-2
-                text-white
-                bg-transparent
-                border-2
-                rounded-md
-                border-slate-400
-              "
-            ></div>
-          </td>
-
-          <td
-            class="
-              px-6
-              py-4
-              text-sm
-              font-medium
-              whitespace-nowrap
-              text-slate-900
-            "
-          >
-            Cody Fisher
-          </td>
-          <td class="px-6 py-4 text-sm whitespace-nowrap text-slate-500">
-            Product Directives Officer
-          </td>
-        </tr>
-
-        <tr class="bg-white">
-          <td>
-            <div
-              class="
-                flex
-                items-center
-                justify-center
-                w-6
-                h-6
-                m-2
-                text-white
-                bg-transparent
-                border-2
-                rounded-md
-                border-slate-400
-              "
-            ></div>
-          </td>
-          <td
-            class="
-              px-6
-              py-4
-              text-sm
-              font-medium
-              whitespace-nowrap
-              text-slate-900
-            "
-          >
-            Cody Fisher
-          </td>
-          <td class="px-6 py-4 text-sm whitespace-nowrap text-slate-500">
-            Product Directives Officer
-          </td>
-        </tr>
-
-        <tr class="bg-slate-100">
-          <td class="rounded-bl-md">
-            <div
-              class="
-                flex
-                items-center
-                justify-center
-                w-6
-                h-6
-                m-2
-                text-white
-                bg-transparent
-                border-2
-                rounded-md
-                border-slate-400
-              "
-            ></div>
-          </td>
-          <td
-            class="
-              px-6
-              py-4
-              text-sm
-              font-medium
-              whitespace-nowrap
-              text-slate-900
-            "
-          >
-            Cody Fisher
-          </td>
-          <td
-            class="
-              px-6
-              py-4
-              text-sm
-              rounded-br-md
-              whitespace-nowrap
-              text-slate-500
-            "
-          >
+          <td class="px-6 py-4 text-md whitespace-nowrap text-slate-500">
             Product Directives Officer
           </td>
         </tr>

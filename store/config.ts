@@ -2,32 +2,65 @@ import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { AppwriteService } from '~/services/appwrite';
 
 export type ConfigType = {
-    settings: {
-        hostname: string;
-    },
     appwrite: {
         endpoint: string;
         projectId: string;
-    }
-    theme: {
-        projectName: string,
-        projectLogo: string
     },
-    groups: {
+    settings: {
+        limitOptions: number[]; // Optional
+    },
+    theme: {
+        projectName: string, // Optional
+        projectLogo: string // Optional
+    },
+    groups: { // Can be empty array
         name: string,
         id: string,
-        parentGroupId: string | null | undefined,
-        icon: string | null | undefined,
-        menuSort: number | null | undefined,
-        isOpenedByDefault: boolean | undefined
+        parentGroupId: string | null, // Optional, null means root level
+        icon: string | null, // Optional
+        menuSort: number, // Optional
+        isOpenedByDefault: boolean // Optional
     }[],
-    panels: {
+    panels: { // Cannot not be empty array
         name: string,
         id: string,
-        groupId: string | null | undefined,
-        icon: string | null | undefined,
-        description: string | null | undefined,
-        menuSort: number | null | undefined
+        groupId: string | null, // Optional, null means no group
+        icon: string | null, // Optional
+        description: string | null, // Optional
+        menuSort: number, // Optional
+        searchAttributes: string[], // Optional, empty array means search disabled
+        defaultLimit: number, // Optional
+        labels: {
+            id: string,
+            name: string,
+            queries: string[], // Optional
+            sorts: { // Optional
+                [attributeId: string]: 'ASC' | 'DESC'
+            } | undefined
+        }[] | undefined,
+        attributes: {
+            [attributeId: string]: {
+                create: {
+                    enabled: boolean; // Optional
+                    type: string;
+                    config: any;
+                },
+                edit: {
+                    enabled: boolean; // Optional
+                    type: string; // Can be '[[COPY_CREATE]]'
+                    config: any;
+                },
+                view: {
+                    enabled: boolean; // Optional
+                    type: string;
+                    config: any;
+                },
+                list: {
+                    type: string;
+                    config: any;
+                }
+            }
+        }
     }[]
 }
 
@@ -91,7 +124,52 @@ export const actions: ActionTree<RootState, RootState> = {
     async load({ commit }) {
 
         // Load config JSON
-        const config: ConfigType = await this.$axios.$get('/config.json');
+        const unprocessedConfig = await this.$axios.$get('/config.json');
+        const config: ConfigType = {
+            ...unprocessedConfig
+        }
+
+        config.settings.limitOptions = config.settings.limitOptions || [10, 25, 50, 100];
+        config.theme.projectLogo = config.theme.projectLogo || "🤖";
+        config.theme.projectName = config.theme.projectName || "Appwrite CMS";
+        config.groups = config.groups.map((g) => {
+            // g.icon = g.icon || '📁';
+            g.isOpenedByDefault = g.isOpenedByDefault === undefined || g.isOpenedByDefault === null ? false : g.isOpenedByDefault;
+            g.menuSort = g.menuSort || 1;
+            g.parentGroupId = g.parentGroupId || null;
+
+            return g;
+        });
+        config.panels = config.panels.map((p) => {
+            p.menuSort = p.menuSort || 1;
+            p.groupId = p.groupId || null;
+            p.defaultLimit = p.defaultLimit || 25;
+            p.labels = p.labels || [];
+            p.attributes = p.attributes || {};
+
+            p.labels = p.labels.map((l) => {
+                l.queries = l.queries || [];
+                l.sorts = l.sorts || {};
+
+                return l;
+            });
+
+            for (const attributeId in p.attributes) {
+                const a = p.attributes[attributeId];
+                a.edit.enabled = a.edit.enabled === null || a.edit.enabled === undefined ? true : a.edit.enabled;
+                a.create.enabled = a.create.enabled === null || a.create.enabled === undefined ? true : a.create.enabled;
+                a.view.enabled = a.view.enabled === null || a.view.enabled === undefined ? true : a.view.enabled;
+
+                a.edit.config = a.edit.config || {};
+                a.create.config = a.create.config || {};
+                a.view.config = a.view.config || {};
+                a.list.config = a.list.config || {};
+            }
+
+            return p;
+        });
+
+
         commit('SET_CONFIG', config);
         AppwriteService.init(config);
 

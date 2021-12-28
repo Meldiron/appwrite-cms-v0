@@ -14,16 +14,41 @@
     >
       <nuxt-link
         to="/app"
-        class="flex items-center w-full p-3 space-x-3 text-white shadow-md  bg-slate-800"
+        class="
+          flex
+          items-center
+          w-full
+          p-3
+          space-x-3
+          text-white
+          shadow-md
+          bg-slate-800
+        "
       >
         <div
-          class="flex items-center justify-center w-12 h-12 rounded-md  bg-slate-100 text-slate-600"
+          class="
+            flex
+            items-center
+            justify-center
+            w-12
+            h-12
+            rounded-md
+            bg-slate-100
+            text-slate-600
+          "
         >
-          {{ config.theme.projectLogo | '🤖' }}
+          {{ config.theme.projectLogo }}
         </div>
 
         <div
-          class="flex-1 w-20 overflow-x-hidden text-lg font-semibold  whitespace-nowrap"
+          class="
+            flex-1
+            w-20
+            overflow-x-hidden
+            text-lg
+            font-semibold
+            whitespace-nowrap
+          "
         >
           <p class="text-ellipsis">{{ config.theme.projectName }}</p>
         </div>
@@ -36,7 +61,17 @@
       <div class="p-3">
         <button
           @click="onLogout()"
-          class="flex items-center justify-center w-full p-3 space-x-3 text-center text-red-500 rounded-lg  bg-slate-900"
+          class="
+            flex
+            items-center
+            justify-center
+            w-full
+            p-3
+            space-x-3
+            text-center text-red-500
+            rounded-lg
+            bg-slate-900
+          "
         >
           <span> Logout </span>
 
@@ -66,7 +101,14 @@
     </div>
 
     <div
-      class="w-full h-full overflow-y-auto  from-slate-100 to-slate-50 bg-gradient-to-b"
+      class="
+        w-full
+        h-full
+        overflow-y-auto
+        from-slate-100
+        to-slate-50
+        bg-gradient-to-b
+      "
     >
       <div
         class="
@@ -84,7 +126,9 @@
           <h1 class="text-xl font-semibold text-slate-900">
             {{ panel.icon ? panel.icon + ' ' : '' }}{{ panel.name }}
           </h1>
-          <p class="text-sm text-slate-500">{{ panel.description }}</p>
+          <p v-if="panel.description" class="text-sm text-slate-500">
+            {{ panel.description }}
+          </p>
         </div>
         <div v-if="!panel">
           <h1 class="text-xl font-semibold text-slate-900">👋 Welcome</h1>

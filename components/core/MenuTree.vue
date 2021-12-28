@@ -15,14 +15,36 @@
     >
       <div
         @click="onToggleCategory($event, menuElement)"
-        class="relative flex items-center justify-start p-3 px-3 space-x-3 rounded-md  menu-button text-slate-300"
+        class="
+          relative
+          flex
+          items-center
+          justify-start
+          p-3
+          px-3
+          space-x-3
+          rounded-md
+          menu-button
+          text-slate-300
+        "
       >
         <div class="flex items-center justify-between w-full">
           <div class="flex items-center justify-start space-x-3">
             <div class="flex items-center justify-start space-x-2">
               <div
                 v-if="level !== 1"
-                class="absolute left-0 w-3 h-4 transform -translate-y-2 border-b-2 border-l-2  tree-indicator rounded-bl-md border-slate-600"
+                class="
+                  absolute
+                  left-0
+                  w-3
+                  h-4
+                  transform
+                  -translate-y-2
+                  border-b-2 border-l-2
+                  tree-indicator
+                  rounded-bl-md
+                  border-slate-600
+                "
               ></div>
               <span class="text-sm" v-if="menuElement.icon">
                 {{ menuElement.icon }}

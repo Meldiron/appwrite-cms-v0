@@ -33,7 +33,7 @@
               border-white
             "
           >
-            {{ config.theme.projectLogo || '🤖' }}
+            {{ config.theme.projectLogo }}
           </div>
         </div>
 
