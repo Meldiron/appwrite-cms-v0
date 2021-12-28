@@ -89,6 +89,7 @@ export const actions: ActionTree<RootState, RootState> = {
         commit("TOGGLE_CATEGORY", categoryId)
     },
     async load({ commit }) {
+
         // Load config JSON
         const config: ConfigType = await this.$axios.$get('/config.json');
         commit('SET_CONFIG', config);
