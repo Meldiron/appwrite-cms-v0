@@ -1,6 +1,6 @@
 {
   "settings": {
-    "hostname": "http://localhost:3000"
+    "hostname": "https://appwrite-cms.vercel.app"
   },
   "appwrite": {
     "endpoint": "https://demo.appwrite.io/v1",
