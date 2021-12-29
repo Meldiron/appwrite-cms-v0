@@ -16,6 +16,10 @@ Hey there 👋 This project is WIP. I do not plan to finish it before Appwrite 0
   - Add platform
   - Custom domain on same root domain
 
+## Usage
+
+Read more at [tutorial document](static/tutorial.md).
+
 ## Future update plan
 
 - Allow registration, probably, somehow

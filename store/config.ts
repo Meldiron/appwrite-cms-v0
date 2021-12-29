@@ -7,6 +7,11 @@ export type ConfigType = {
         projectId: string;
     },
     settings: {
+        permissionOptions: {
+            name: string;
+            read: string[];
+            write: string[];
+        }[]; // Optional
         limitOptions: number[]; // Optional
     },
     theme: {
@@ -35,30 +40,38 @@ export type ConfigType = {
             name: string,
             queries: string[], // Optional
             sorts: { // Optional
-                [attributeId: string]: 'ASC' | 'DESC'
+                [attributeKey: string]: 'ASC' | 'DESC'
             } | undefined
         }[] | undefined,
-        attributes: {
-            [attributeId: string]: {
-                create: {
-                    enabled: boolean; // Optional
+
+        actions: {
+            edit: {
+                enabled: boolean,
+                blocks: {
                     type: string;
                     config: any;
-                },
-                edit: {
-                    enabled: boolean; // Optional
-                    type: string; // Can be '[[COPY_CREATE]]'
-                    config: any;
-                },
-                view: {
-                    enabled: boolean; // Optional
+                }[]
+            },
+            create: {
+                enabled: boolean,
+                blocks: {
                     type: string;
                     config: any;
-                },
-                list: {
+                }[]
+            },
+            list: {
+                enabled: boolean,
+                blocks: {
                     type: string;
                     config: any;
-                }
+                }[]
+            },
+            view: {
+                enabled: boolean,
+                blocks: {
+                    type: string;
+                    config: any;
+                }[]
             }
         }
     }[]
@@ -130,8 +143,10 @@ export const actions: ActionTree<RootState, RootState> = {
         }
 
         config.settings.limitOptions = config.settings.limitOptions || [10, 25, 50, 100];
+        config.settings.permissionOptions = config.settings.permissionOptions || [];
         config.theme.projectLogo = config.theme.projectLogo || "🤖";
         config.theme.projectName = config.theme.projectName || "Appwrite CMS";
+
         config.groups = config.groups.map((g) => {
             // g.icon = g.icon || '📁';
             g.isOpenedByDefault = g.isOpenedByDefault === undefined || g.isOpenedByDefault === null ? false : g.isOpenedByDefault;
@@ -140,12 +155,29 @@ export const actions: ActionTree<RootState, RootState> = {
 
             return g;
         });
+
         config.panels = config.panels.map((p) => {
             p.menuSort = p.menuSort || 1;
             p.groupId = p.groupId || null;
             p.defaultLimit = p.defaultLimit || 25;
             p.labels = p.labels || [];
-            p.attributes = p.attributes || {};
+
+            p.actions.create.blocks = p.actions.create.blocks.map((b) => {
+                b.config = b.config || {};
+                return b;
+            });
+            p.actions.edit.blocks = p.actions.edit.blocks.map((b) => {
+                b.config = b.config || {};
+                return b;
+            });
+            p.actions.view.blocks = p.actions.view.blocks.map((b) => {
+                b.config = b.config || {};
+                return b;
+            });
+            p.actions.list.blocks = p.actions.list.blocks.map((b) => {
+                b.config = b.config || {};
+                return b;
+            });
 
             p.labels = p.labels.map((l) => {
                 l.queries = l.queries || [];
@@ -153,18 +185,6 @@ export const actions: ActionTree<RootState, RootState> = {
 
                 return l;
             });
-
-            for (const attributeId in p.attributes) {
-                const a = p.attributes[attributeId];
-                a.edit.enabled = a.edit.enabled === null || a.edit.enabled === undefined ? true : a.edit.enabled;
-                a.create.enabled = a.create.enabled === null || a.create.enabled === undefined ? true : a.create.enabled;
-                a.view.enabled = a.view.enabled === null || a.view.enabled === undefined ? true : a.view.enabled;
-
-                a.edit.config = a.edit.config || {};
-                a.create.config = a.create.config || {};
-                a.view.config = a.view.config || {};
-                a.list.config = a.list.config || {};
-            }
 
             return p;
         });

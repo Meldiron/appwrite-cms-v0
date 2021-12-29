@@ -1,5 +1,5 @@
 import { ConfigType } from "~/store/config";
-import { Appwrite } from "appwrite";
+import { Appwrite, Models } from "appwrite";
 
 // @ts-ignore Because middleware sets this and noone ever loads data before middleware fills it
 let config: ConfigType = null;
@@ -17,6 +17,7 @@ export const AppwriteService = {
             .setProject(config.appwrite.projectId);
     },
 
+    // TODO: Login with console account instead, so we can access users in future
     async login(email: string, password: string): Promise<boolean> {
         try {
             await appwrite.account.createSession(email, password);
@@ -46,5 +47,13 @@ export const AppwriteService = {
         catch (err: any) {
             return false;
         }
+    },
+
+    async getDocument(collectionId: string, documentId: string): Promise<any & Models.Document> {
+        return await appwrite.database.getDocument(collectionId, documentId);
+    },
+
+    previewFile(fileId: string): URL {
+        return appwrite.storage.getFilePreview(fileId, 500, undefined, "center", undefined, undefined, undefined, undefined, undefined, undefined, undefined, "webp")
     }
 }

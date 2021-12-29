@@ -14,41 +14,16 @@
     >
       <nuxt-link
         to="/app"
-        class="
-          flex
-          items-center
-          w-full
-          p-3
-          space-x-3
-          text-white
-          shadow-md
-          bg-slate-800
-        "
+        class="flex items-center w-full p-3 space-x-3 text-white shadow-md  bg-slate-800"
       >
         <div
-          class="
-            flex
-            items-center
-            justify-center
-            w-12
-            h-12
-            rounded-md
-            bg-slate-100
-            text-slate-600
-          "
+          class="flex items-center justify-center w-12 h-12 rounded-md  bg-slate-100 text-slate-600"
         >
           {{ config.theme.projectLogo }}
         </div>
 
         <div
-          class="
-            flex-1
-            w-20
-            overflow-x-hidden
-            text-lg
-            font-semibold
-            whitespace-nowrap
-          "
+          class="flex-1 w-20 overflow-x-hidden text-lg font-semibold  whitespace-nowrap"
         >
           <p class="text-ellipsis">{{ config.theme.projectName }}</p>
         </div>
@@ -61,17 +36,7 @@
       <div class="p-3">
         <button
           @click="onLogout()"
-          class="
-            flex
-            items-center
-            justify-center
-            w-full
-            p-3
-            space-x-3
-            text-center text-red-500
-            rounded-lg
-            bg-slate-900
-          "
+          class="flex items-center justify-center w-full p-3 space-x-3 text-center text-red-500 rounded-lg  bg-slate-900"
         >
           <span> Logout </span>
 
@@ -101,14 +66,7 @@
     </div>
 
     <div
-      class="
-        w-full
-        h-full
-        overflow-y-auto
-        from-slate-100
-        to-slate-50
-        bg-gradient-to-b
-      "
+      class="w-full h-full overflow-y-auto  from-slate-100 to-slate-50 bg-gradient-to-b"
     >
       <div
         class="
@@ -137,8 +95,14 @@
           </p>
         </div>
 
-        <div v-if="panel" class="flex items-center justify-end space-x-4">
-          <div class="flex items-center justify-center">
+        <div
+          v-if="panel && pageType === 'list'"
+          class="flex items-center justify-end space-x-4"
+        >
+          <div
+            v-if="panel.searchAttributes && panel.searchAttributes.length > 0"
+            class="flex items-center justify-center"
+          >
             <div class="p-3 rounded-l-md bg-slate-100 text-slate-700">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +140,11 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-center">
+          <nuxt-link
+            :to="'/app/panels/' + panel.id + '/create'"
+            v-if="panel.actions.create.enabled"
+            class="flex items-center justify-center"
+          >
             <div class="p-3 text-sm text-white rounded-l-md bg-slate-800">
               Create
             </div>
@@ -196,7 +164,87 @@
                 />
               </svg>
             </div>
-          </div>
+          </nuxt-link>
+        </div>
+
+        <div
+          v-if="panel && pageType === 'create'"
+          class="flex items-center justify-end space-x-4"
+        >
+          <nuxt-link
+            :to="'/app/panels/' + panel.id"
+            class="flex items-center justify-center"
+          >
+            <div class="p-3 text-sm text-slate-800 rounded-l-md bg-slate-100">
+              Discard
+            </div>
+            <div class="p-3 text-slate-800 rounded-r-md bg-slate-200">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </nuxt-link>
+
+          <button class="flex items-center justify-center">
+            <div class="p-3 text-sm text-white rounded-l-md bg-slate-800">
+              Save
+            </div>
+            <div class="p-3 text-white rounded-r-md bg-slate-900">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"
+                />
+                <path
+                  d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"
+                />
+                <path
+                  d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <div
+          v-if="panel && pageType === 'view'"
+          class="flex items-center justify-end space-x-4"
+        >
+          <nuxt-link
+            :to="'/app/panels/' + panel.id"
+            class="flex items-center justify-center"
+          >
+            <div class="p-3 text-sm text-white rounded-l-md bg-slate-800">
+              Close
+            </div>
+            <div class="p-3 text-white rounded-r-md bg-slate-900">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </nuxt-link>
         </div>
       </div>
 
@@ -246,6 +294,7 @@ export default Vue.extend({
     return {
       panel: null,
       isLoggingOut: false,
+      pageType: 'list',
     }
   },
   watch: {
@@ -255,6 +304,16 @@ export default Vue.extend({
   },
   methods: {
     updatePanel() {
+      this.pageType = 'list'
+
+      if (this.$route.path.endsWith('/create')) {
+        this.pageType = 'create'
+      }
+
+      if (this.$route.path.endsWith('/view')) {
+        this.pageType = 'view'
+      }
+
       this.panel = this.$store.state.config.config.panels.find(
         (p: any) => p.id === this.$route.params.panelId
       )
