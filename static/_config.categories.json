@@ -1,14 +1,26 @@
 {
   "settings": {
-    "hostname": "https://appwrite-cms.vercel.app"
+    "limitOptions": [10, 25, 50, 100],
+    "permissionOptions": [
+      {
+        "name": "Public",
+        "read": ["role:all"],
+        "write": ["team:editors"]
+      },
+      {
+        "name": "Members only",
+        "read": ["role:member"],
+        "write": ["team:editors"]
+      }
+    ]
   },
   "appwrite": {
-    "endpoint": "https://demo.appwrite.io/v1",
-    "projectId": "61cb694db9bea"
+    "endpoint": "https://dbdemos.appwrite.org/v1",
+    "projectId": "almostNetflix"
   },
   "theme": {
-    "projectName": "Topgaming",
-    "projectLogo": "🎮"
+    "projectName": "Almost Netflix",
+    "projectLogo": "🎬"
   },
   "groups": [
     {
@@ -60,49 +72,315 @@
       "id": "staticPages",
       "groupId": "copywriting",
       "icon": "📄",
-      "description": "Create your own sub-pages."
+      "description": "Create your own sub-pages.",
+      "searchAttributes": ["name", "description"],
+      "defaultLimit": 10,
+      "labels": [
+        {
+          "id": "all",
+          "name": "All Movies",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        },
+        {
+          "id": "other",
+          "name": "Other categories from web app",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        }
+      ],
+      "actions": {
+        "create": {
+          "enabled": true,
+          "blocks": []
+        },
+        "list": {
+          "enabled": true,
+          "blocks": []
+        },
+        "view": {
+          "enabled": true,
+          "blocks": []
+        },
+        "edit": {
+          "enabled": true,
+          "blocks": []
+        }
+      }
     },
     {
       "name": "Articles",
       "id": "articles",
       "groupId": "copywriting",
       "icon": "✍",
-      "description": "Write articles for promotion and events."
+      "description": "Write articles for promotion and events.",
+      "searchAttributes": ["name", "description"],
+      "defaultLimit": 10,
+      "labels": [
+        {
+          "id": "all",
+          "name": "All Movies",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        },
+        {
+          "id": "other",
+          "name": "Other categories from web app",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        }
+      ],
+      "actions": {
+        "create": {
+          "enabled": true,
+          "blocks": []
+        },
+        "list": {
+          "enabled": true,
+          "blocks": []
+        },
+        "view": {
+          "enabled": true,
+          "blocks": []
+        },
+        "edit": {
+          "enabled": true,
+          "blocks": []
+        }
+      }
     },
     {
       "name": "Settings",
       "id": "settings",
       "groupId": null,
       "icon": "ℹ️",
-      "description": "Basic configuration of the website."
+      "description": "Basic configuration of the website.",
+      "searchAttributes": ["name", "description"],
+      "defaultLimit": 10,
+      "labels": [
+        {
+          "id": "all",
+          "name": "All Movies",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        },
+        {
+          "id": "other",
+          "name": "Other categories from web app",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        }
+      ],
+      "actions": {
+        "create": {
+          "enabled": true,
+          "blocks": []
+        },
+        "list": {
+          "enabled": true,
+          "blocks": []
+        },
+        "view": {
+          "enabled": true,
+          "blocks": []
+        },
+        "edit": {
+          "enabled": true,
+          "blocks": []
+        }
+      }
     },
     {
       "name": "Maintenance",
       "id": "maintenance",
       "groupId": null,
       "icon": "🛠",
-      "description": "Toggle maintenance mode of the website."
+      "description": "Toggle maintenance mode of the website.",
+      "searchAttributes": ["name", "description"],
+      "defaultLimit": 10,
+      "labels": [
+        {
+          "id": "all",
+          "name": "All Movies",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        },
+        {
+          "id": "other",
+          "name": "Other categories from web app",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        }
+      ],
+      "actions": {
+        "create": {
+          "enabled": true,
+          "blocks": []
+        },
+        "list": {
+          "enabled": true,
+          "blocks": []
+        },
+        "view": {
+          "enabled": true,
+          "blocks": []
+        },
+        "edit": {
+          "enabled": true,
+          "blocks": []
+        }
+      }
     },
     {
       "name": "Players",
       "id": "players",
       "groupId": "userbase",
       "icon": "😡",
-      "description": "List of all registered players."
+      "description": "List of all registered players.",
+      "searchAttributes": ["name", "description"],
+      "defaultLimit": 10,
+      "labels": [
+        {
+          "id": "all",
+          "name": "All Movies",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        },
+        {
+          "id": "other",
+          "name": "Other categories from web app",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        }
+      ],
+      "actions": {
+        "create": {
+          "enabled": true,
+          "blocks": []
+        },
+        "list": {
+          "enabled": true,
+          "blocks": []
+        },
+        "view": {
+          "enabled": true,
+          "blocks": []
+        },
+        "edit": {
+          "enabled": true,
+          "blocks": []
+        }
+      }
     },
     {
       "name": "Teams",
       "id": "teams",
       "groupId": "userbase",
       "icon": "🏉",
-      "description": "Teams that consists of players."
+      "description": "Teams that consists of players.",
+      "searchAttributes": ["name", "description"],
+      "defaultLimit": 10,
+      "labels": [
+        {
+          "id": "all",
+          "name": "All Movies",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        },
+        {
+          "id": "other",
+          "name": "Other categories from web app",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        }
+      ],
+      "actions": {
+        "create": {
+          "enabled": true,
+          "blocks": []
+        },
+        "list": {
+          "enabled": true,
+          "blocks": []
+        },
+        "view": {
+          "enabled": true,
+          "blocks": []
+        },
+        "edit": {
+          "enabled": true,
+          "blocks": []
+        }
+      }
     },
     {
       "name": "FT Hype Cup",
       "id": "ftHypeCup",
       "groupId": "fortnite",
       "icon": "🏅",
-      "description": "Hype cup tournamnets."
+      "description": "Hype cup tournamnets.",
+      "searchAttributes": ["name", "description"],
+      "defaultLimit": 10,
+      "labels": [
+        {
+          "id": "all",
+          "name": "All Movies",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        },
+        {
+          "id": "other",
+          "name": "Other categories from web app",
+          "queries": [],
+          "sorts": {
+            "trendingIndex": "DESC"
+          }
+        }
+      ],
+      "actions": {
+        "create": {
+          "enabled": true,
+          "blocks": []
+        },
+        "list": {
+          "enabled": true,
+          "blocks": []
+        },
+        "view": {
+          "enabled": true,
+          "blocks": []
+        },
+        "edit": {
+          "enabled": true,
+          "blocks": []
+        }
+      }
     }
   ]
 }
