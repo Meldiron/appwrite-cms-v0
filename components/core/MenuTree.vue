@@ -15,7 +15,7 @@
     >
       <div
         @click="onToggleCategory($event, menuElement)"
-        class="relative flex items-center justify-start p-3 px-3 space-x-3 rounded-md  menu-button text-slate-300"
+        class="relative flex items-center justify-start p-3 px-3 space-x-3 rounded-md  group menu-button text-slate-300"
       >
         <div class="flex items-center justify-between w-full">
           <div class="flex items-center justify-start space-x-3">
@@ -28,7 +28,7 @@
                 {{ menuElement.icon }}
               </span>
             </div>
-            <p class="text-sm font-light uppercase">
+            <p class="text-sm font-light uppercase group-hover:underline">
               {{ menuElement.title }}
             </p>
           </div>

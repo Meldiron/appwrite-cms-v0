@@ -23,7 +23,7 @@ import Vue from 'vue'
 export default Vue.extend({
   props: ['config', 'appwrite', 'document'],
   methods: {
-    $append(objectDraft: any) {
+    async $append(objectDraft: any) {
       objectDraft[this.config.attributeKey] = this.value || undefined
 
       return objectDraft

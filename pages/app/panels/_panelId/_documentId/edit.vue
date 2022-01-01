@@ -83,7 +83,7 @@ export default Vue.extend({
         }
 
         if (appendMethod) {
-          document = appendMethod(document)
+          document = await appendMethod(document)
         }
 
         i++

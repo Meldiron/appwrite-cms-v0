@@ -14,7 +14,7 @@
     >
       <nuxt-link
         to="/app"
-        class="flex items-center w-full p-3 space-x-3 text-white shadow-md  bg-slate-800"
+        class="flex items-center w-full p-3 space-x-3 text-white shadow-md  group bg-slate-800"
       >
         <div
           class="flex items-center justify-center w-12 h-12 text-center text-white rounded-md  bg-slate-900"
@@ -25,7 +25,9 @@
         <div
           class="flex-1 w-20 overflow-x-hidden text-lg font-semibold  whitespace-nowrap"
         >
-          <p class="text-ellipsis">{{ config.theme.projectName }}</p>
+          <p class="group-hover:underline text-ellipsis">
+            {{ config.theme.projectName }}
+          </p>
         </div>
       </nuxt-link>
 
@@ -106,7 +108,7 @@
         >
           <div
             v-if="panel.searchAttributes && panel.searchAttributes.length > 0"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center group"
           >
             <div class="p-3 rounded-l-md bg-slate-100 text-slate-700">
               <svg
@@ -148,12 +150,16 @@
           <nuxt-link
             :to="'/app/panels/' + panelId + '/create'"
             v-if="isEnabled(panel.actions.create)"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center group"
           >
-            <div class="p-3 text-sm text-white rounded-l-md bg-slate-800">
+            <div
+              class="p-3 text-sm text-white  rounded-l-md bg-slate-800 group-hover:bg-slate-900"
+            >
               Create
             </div>
-            <div class="p-3 text-white rounded-r-md bg-slate-900">
+            <div
+              class="p-3 text-white  group-hover:bg-black rounded-r-md bg-slate-900"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"
@@ -178,12 +184,16 @@
         >
           <nuxt-link
             :to="'/app/panels/' + panelId"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center group"
           >
-            <div class="p-3 text-sm text-slate-800 rounded-l-md bg-slate-100">
+            <div
+              class="p-3 text-sm  text-slate-800 rounded-l-md group-hover:bg-slate-200 bg-slate-100"
+            >
               Discard
             </div>
-            <div class="p-3 text-slate-800 rounded-r-md bg-slate-200">
+            <div
+              class="p-3  text-slate-800 rounded-r-md group-hover:bg-slate-300 bg-slate-200"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"
@@ -202,12 +212,16 @@
           <button
             type="button"
             @click="SET_ACTION('onCreateSave')"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center group"
           >
-            <div class="p-3 text-sm text-white rounded-l-md bg-slate-800">
+            <div
+              class="p-3 text-sm text-white  group-hover:bg-slate-900 rounded-l-md bg-slate-800"
+            >
               Save
             </div>
-            <div class="p-3 text-white rounded-r-md bg-slate-900">
+            <div
+              class="p-3 text-white  group-hover:bg-black rounded-r-md bg-slate-900"
+            >
               <svg
                 v-if="!GET_IS_LOADING"
                 xmlns="http://www.w3.org/2000/svg"
@@ -253,16 +267,20 @@
 
         <div
           v-if="panel && pageType === 'edit'"
-          class="flex items-center justify-end space-x-4"
+          class="flex items-center justify-end space-x-4 group"
         >
           <nuxt-link
             :to="'/app/panels/' + panelId"
             class="flex items-center justify-center"
           >
-            <div class="p-3 text-sm text-slate-800 rounded-l-md bg-slate-100">
+            <div
+              class="p-3 text-sm  text-slate-800 group-hover:bg-slate-200 rounded-l-md bg-slate-100"
+            >
               Discard
             </div>
-            <div class="p-3 text-slate-800 rounded-r-md bg-slate-200">
+            <div
+              class="p-3  text-slate-800 rounded-r-md group-hover:bg-slate-300 bg-slate-200"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"
@@ -281,12 +299,16 @@
           <button
             type="button"
             @click="SET_ACTION('onEditSave')"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center group"
           >
-            <div class="p-3 text-sm text-white rounded-l-md bg-slate-800">
+            <div
+              class="p-3 text-sm text-white  group-hover:bg-slate-900 rounded-l-md bg-slate-800"
+            >
               Save
             </div>
-            <div class="p-3 text-white rounded-r-md bg-slate-900">
+            <div
+              class="p-3 text-white  group-hover:bg-black rounded-r-md bg-slate-900"
+            >
               <svg
                 v-if="!GET_IS_LOADING"
                 xmlns="http://www.w3.org/2000/svg"
@@ -336,12 +358,16 @@
         >
           <nuxt-link
             :to="'/app/panels/' + panelId"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center group"
           >
-            <div class="p-3 text-sm text-slate-800 rounded-l-md bg-slate-100">
+            <div
+              class="p-3 text-sm  text-slate-800 rounded-l-md group-hover:bg-slate-200 bg-slate-100"
+            >
               Close
             </div>
-            <div class="p-3 text-slate-800 rounded-r-md bg-slate-200">
+            <div
+              class="p-3  text-slate-800 rounded-r-md group-hover:bg-slate-300 bg-slate-200"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"
@@ -362,12 +388,16 @@
           <nuxt-link
             v-if="isEnabled(panel.actions.edit)"
             :to="'/app/panels/' + panelId + '/' + documentId + '/edit'"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center group"
           >
-            <div class="p-3 text-sm text-white rounded-l-md bg-slate-800">
+            <div
+              class="p-3 text-sm text-white  group-hover:bg-slate-900 rounded-l-md bg-slate-800"
+            >
               Edit
             </div>
-            <div class="p-3 text-white rounded-r-md bg-slate-900">
+            <div
+              class="p-3 text-white  rounded-r-md group-hover:bg-black bg-slate-900"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"

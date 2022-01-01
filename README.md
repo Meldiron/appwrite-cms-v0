@@ -2,6 +2,8 @@
 
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/Meldiron/appwrite-cms">![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)</a>
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMeldiron%2Fappwrite-cms)
+
 # AppwriteCMS
 
 Hey there 👋 This project is work in progress. I do not plan to finish it before Appwrite 0.12 release.
@@ -24,16 +26,11 @@ Read more at [tutorial document](static/tutorial.md).
 
 ## TODO
 
-- If on edit page, "back" should go either to view or list.. Somehow.. you should know where...
-- Currently we probably ignore enabled in actions in config
-- List page
 - Docs how to create new components (all 3 types)
 - Searching
-- Limiting
-- List + paginating
-- Labels
 - TODOS in code
 - Pouzi isLoading zo store aby si dal loading ikonku na action tlacidlo (save)
+- isLoading po stranke asi vsade chyba
 
 ## Future update plan
 

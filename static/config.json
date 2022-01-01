@@ -10,34 +10,42 @@
       "isOpenedByDefault": true
     }
   },
+  "settings": {
+    "limitOptions": [2, 25]
+  },
   "panels": {
     "posts": {
+      "searchAttributes": ["title"],
       "description": "Articles visible on landing page.",
       "icon": "📑",
       "groupId": "content",
       "name": "Posts",
+      "labels": {},
       "actions": {
         "list": {
           "blocks": [
             {
+              "name": "Appwrite ID",
+              "width": "250px",
               "type": "ListStringValue",
               "config": {
-                "attributeKey": "id",
-                "attributeName": "Appwrite ID"
+                "attributeKey": "$id"
               }
             },
             {
+              "name": "Title",
+              "width": "50%",
               "type": "ListStringValue",
               "config": {
-                "attributeKey": "title",
-                "attributeName": "Title"
+                "attributeKey": "title"
               }
             },
             {
+              "name": "Text",
+              "width": "50%",
               "type": "ListStringValue",
               "config": {
-                "attributeKey": "content",
-                "attributeName": "Text"
+                "attributeKey": "content"
               }
             }
           ]

@@ -14,7 +14,6 @@ export type ConfigType = {
             write: string[];
         }[]; // Optional
         limitOptions: number[]; // Optional
-        // TODO: Use limitOptions
     },
     theme: {
         projectName: string, // Optional
@@ -23,7 +22,7 @@ export type ConfigType = {
     groups: {
         [groupId: string]: {
             name: string,
-            id: string,
+            id: string, // Set automatically
             parentGroupId: string | null, // Optional, null means root level
             icon: string | null, // Optional
             menuSort: number, // Optional
@@ -33,21 +32,26 @@ export type ConfigType = {
     panels: {
         [panelId: string]: {
             name: string,
-            id: string,
+            id: string, // Set automatically
             groupId: string | null, // Optional, null means no group
             icon: string | null, // Optional
             description: string | null, // Optional
             menuSort: number, // Optional
             searchAttributes: string[], // Optional, empty array means search disabled
+            // TODO: Use searchAttributes
             defaultLimit: number, // Optional
+            hideAllRecordsLabel: boolean, // Optional
+            canDeleteDocuments: boolean, // Optional
             labels: {
-                id: string,
-                name: string,
-                queries: string[], // Optional
-                sorts: { // Optional
-                    [attributeKey: string]: 'ASC' | 'DESC'
-                } | undefined
-            }[] | undefined,
+                [labelId: string]: {
+                    id: string, // Set automatically
+                    name: string,
+                    queries: string[], // Optional
+                    sorts: { // Optional
+                        [attributeKey: string]: 'ASC' | 'DESC'
+                    } | undefined
+                }
+            },
 
             actions: {
                 edit: {
@@ -65,6 +69,8 @@ export type ConfigType = {
                 },
                 list: {
                     blocks: {
+                        width: number; // In pixels
+                        name: string;
                         type: string;
                         config: any;
                     }[]
@@ -172,8 +178,11 @@ export const actions: ActionTree<RootState, RootState> = {
 
             p.menuSort = p.menuSort || 1;
             p.groupId = p.groupId || null;
-            p.defaultLimit = p.defaultLimit || 25;
-            p.labels = p.labels || [];
+            p.defaultLimit = p.defaultLimit || config.settings.limitOptions[0];
+            p.canDeleteDocuments = p.canDeleteDocuments === undefined || p.canDeleteDocuments === null ? true : p.canDeleteDocuments;
+            p.hideAllRecordsLabel = p.hideAllRecordsLabel === undefined || p.hideAllRecordsLabel === null ? false : p.hideAllRecordsLabel;
+            p.labels = p.labels || {};
+
             p.actions = p.actions || {};
 
             p.actions.create = p.actions.create || {};
@@ -204,15 +213,29 @@ export const actions: ActionTree<RootState, RootState> = {
             });
             p.actions.list.blocks = p.actions.list.blocks.map((b) => {
                 b.config = b.config || {};
+                b.name = b.name || "Unnamed";
                 return b;
             });
 
-            p.labels = p.labels.map((l) => {
-                l.queries = l.queries || [];
-                l.sorts = l.sorts || {};
+            if (!p.hideAllRecordsLabel) {
+                p.labels = {
+                    'all-records': {
+                        id: 'all-records',
+                        name: "All records",
+                        queries: [],
+                        sorts: {}
+                    },
+                    ...p.labels
+                };
+            }
 
-                return l;
-            });
+            for (const labelId in p.labels) {
+                p.labels[labelId].id = labelId;
+                p.labels[labelId].queries = p.labels[labelId].queries || [];
+                p.labels[labelId].sorts = p.labels[labelId].sorts || {};
+            }
+
+
         }
 
         commit('SET_CONFIG', config);
