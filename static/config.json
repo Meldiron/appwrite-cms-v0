@@ -1,164 +1,102 @@
 {
-  "settings": {
-    "limitOptions": [10, 25, 50, 100],
-    "permissionOptions": [
-      {
-        "name": "Public",
-        "read": ["role:all"],
-        "write": ["team:editors"]
-      },
-      {
-        "name": "Members only",
-        "read": ["role:member"],
-        "write": ["team:editors"]
-      }
-    ]
-  },
   "appwrite": {
     "endpoint": "https://dbdemos.appwrite.org/v1",
-    "projectId": "almostNetflix"
+    "projectId": "appwriteBlog"
   },
-  "theme": {
-    "projectName": "Almost Netflix",
-    "projectLogo": "🎬"
+  "groups": {
+    "content": {
+      "name": "Content",
+      "icon": "📃",
+      "isOpenedByDefault": true
+    }
   },
-  "groups": [],
-  "panels": [
-    {
-      "name": "Movies",
-      "id": "movies",
-      "groupId": null,
-      "icon": "🍿",
-      "description": "All movies provided by AlmostNetflix.",
-      "searchAttributes": ["name", "description"],
-      "defaultLimit": 10,
-      "labels": [
-        {
-          "id": "all",
-          "name": "All Movies",
-          "queries": [],
-          "sorts": {
-            "trendingIndex": "DESC"
-          }
-        },
-        {
-          "id": "other",
-          "name": "Other categories from web app",
-          "queries": [],
-          "sorts": {
-            "trendingIndex": "DESC"
-          }
-        }
-      ],
+  "panels": {
+    "posts": {
+      "description": "Articles visible on landing page.",
+      "icon": "📑",
+      "groupId": "content",
+      "name": "Posts",
       "actions": {
-        "create": {
-          "enabled": true,
-          "blocks": []
-        },
         "list": {
-          "enabled": true,
-          "blocks": []
+          "blocks": [
+            {
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "id",
+                "attributeName": "Appwrite ID"
+              }
+            },
+            {
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "title",
+                "attributeName": "Title"
+              }
+            },
+            {
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "content",
+                "attributeName": "Text"
+              }
+            }
+          ]
         },
+
         "view": {
-          "enabled": true,
           "blocks": [
             {
               "type": "PresentationDivider",
               "config": {
-                "text": "Movie details",
-                "icon": "🎬"
+                "text": "Your Article",
+                "icon": "🌈"
               }
             },
-
             {
-              "type": "DocumentImageValue",
+              "type": "DetailStringValue",
               "config": {
-                "attributeKey": "thumbnailImageId"
+                "attributeKey": "title",
+                "attributeName": "Article title"
               }
             },
-
             {
-              "type": "DocumentStringValue",
+              "type": "DetailStringValue",
               "config": {
-                "attributeKey": "name",
-                "attributeName": "Title"
-              }
-            },
-
-            {
-              "type": "DocumentStringValue",
-              "config": {
-                "attributeKey": "description",
-                "attributeName": "Description"
-              }
-            },
-
-            {
-              "type": "DocumentStringValue",
-              "config": {
-                "attributeKey": "durationMinutes",
-                "attributeName": "Movie duration",
-                "suffix": " minutes"
-              }
-            },
-
-            {
-              "type": "DocumentBooleanValue",
-              "config": {
-                "attributeKey": "isOriginal",
-                "attributeName": "Is movie AlmostNetflix original?"
-              }
-            },
-
-            {
-              "type": "DocumentStringValue",
-              "config": {
-                "attributeKey": "ageRestriction",
-                "attributeName": "Age Restriction",
-                "note": "AR13 = 13+, AR18 = 18+"
-              }
-            },
-
-            {
-              "type": "DocumentStringValue",
-              "config": {
-                "attributeKey": "trendingIndex",
-                "attributeName": "Trending Index",
-                "note": "Higher number means more trending"
-              }
-            },
-
-            {
-              "type": "PresentationDivider",
-              "config": {
-                "text": "Date settings",
-                "icon": "📆"
-              }
-            },
-
-            {
-              "type": "DocumentDateValue",
-              "config": {
-                "attributeKey": "releaseDate",
-                "attributeName": "Release Date"
-              }
-            },
-
-            {
-              "type": "DocumentDateValue",
-              "config": {
-                "attributeKey": "netflixReleaseDate",
-                "attributeName": "AlmostNetflix Release Date",
-                "note": "Date of release on AlmostNetflix platform"
+                "attributeKey": "content",
+                "attributeName": "Article text"
               }
             }
           ]
         },
         "edit": {
-          "enabled": true,
-          "blocks": []
+          "blocksReflectCreate": true
+        },
+        "create": {
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "config": {
+                "text": "Post editor",
+                "icon": "👨‍💼"
+              }
+            },
+            {
+              "type": "FormTextInput",
+              "config": {
+                "placeholder": "Title",
+                "attributeKey": "title"
+              }
+            },
+            {
+              "type": "FormTextareaInput",
+              "config": {
+                "placeholder": "Content",
+                "attributeKey": "content"
+              }
+            }
+          ]
         }
       }
     }
-  ]
+  }
 }

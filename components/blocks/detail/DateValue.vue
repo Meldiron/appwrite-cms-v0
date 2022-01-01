@@ -16,7 +16,7 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  props: ['config', 'document'],
+  props: ['config', 'document', 'appwrite'],
   methods: {
     parseDate(dateTimestamp: number) {
       const date = new Date(dateTimestamp * 1000)

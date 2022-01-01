@@ -62,6 +62,13 @@
         <p class="font-light text-slate-600">This category is empty</p>
       </div>
     </nuxt-link>
+
+    <p
+      v-if="Object.keys(menuTree).length <= 0"
+      class="font-light text-slate-600"
+    >
+      No panels found
+    </p>
   </div>
 </template>
 

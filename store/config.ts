@@ -8,73 +8,76 @@ export type ConfigType = {
     },
     settings: {
         permissionOptions: {
+            // TODO: Use permissionOptions
             name: string;
             read: string[];
             write: string[];
         }[]; // Optional
         limitOptions: number[]; // Optional
+        // TODO: Use limitOptions
     },
     theme: {
         projectName: string, // Optional
-        projectLogo: string // Optional
+        projectIcon: string // Optional
     },
-    groups: { // Can be empty array
-        name: string,
-        id: string,
-        parentGroupId: string | null, // Optional, null means root level
-        icon: string | null, // Optional
-        menuSort: number, // Optional
-        isOpenedByDefault: boolean // Optional
-    }[],
-    panels: { // Cannot not be empty array
-        name: string,
-        id: string,
-        groupId: string | null, // Optional, null means no group
-        icon: string | null, // Optional
-        description: string | null, // Optional
-        menuSort: number, // Optional
-        searchAttributes: string[], // Optional, empty array means search disabled
-        defaultLimit: number, // Optional
-        labels: {
-            id: string,
+    groups: {
+        [groupId: string]: {
             name: string,
-            queries: string[], // Optional
-            sorts: { // Optional
-                [attributeKey: string]: 'ASC' | 'DESC'
-            } | undefined
-        }[] | undefined,
+            id: string,
+            parentGroupId: string | null, // Optional, null means root level
+            icon: string | null, // Optional
+            menuSort: number, // Optional
+            isOpenedByDefault: boolean // Optional
+        }
+    },
+    panels: {
+        [panelId: string]: {
+            name: string,
+            id: string,
+            groupId: string | null, // Optional, null means no group
+            icon: string | null, // Optional
+            description: string | null, // Optional
+            menuSort: number, // Optional
+            searchAttributes: string[], // Optional, empty array means search disabled
+            defaultLimit: number, // Optional
+            labels: {
+                id: string,
+                name: string,
+                queries: string[], // Optional
+                sorts: { // Optional
+                    [attributeKey: string]: 'ASC' | 'DESC'
+                } | undefined
+            }[] | undefined,
 
-        actions: {
-            edit: {
-                enabled: boolean,
-                blocks: {
-                    type: string;
-                    config: any;
-                }[]
-            },
-            create: {
-                enabled: boolean,
-                blocks: {
-                    type: string;
-                    config: any;
-                }[]
-            },
-            list: {
-                enabled: boolean,
-                blocks: {
-                    type: string;
-                    config: any;
-                }[]
-            },
-            view: {
-                enabled: boolean,
-                blocks: {
-                    type: string;
-                    config: any;
-                }[]
+            actions: {
+                edit: {
+                    blocksReflectCreate: boolean, // Optional
+                    blocks: {
+                        type: string;
+                        config: any;
+                    }[]
+                },
+                create: {
+                    blocks: {
+                        type: string;
+                        config: any;
+                    }[]
+                },
+                list: {
+                    blocks: {
+                        type: string;
+                        config: any;
+                    }[]
+                },
+                view: {
+                    blocks: {
+                        type: string;
+                        config: any;
+                    }[]
+                }
             }
         }
-    }[]
+    }
 }
 
 export type MenuTreeType =
@@ -142,25 +145,50 @@ export const actions: ActionTree<RootState, RootState> = {
             ...unprocessedConfig
         }
 
+        config.settings = config.settings || {};
+        config.panels = config.panels || {};
+        config.groups = config.groups || {};
+        config.theme = config.theme || {};
+        config.appwrite = config.appwrite || {};
+
         config.settings.limitOptions = config.settings.limitOptions || [10, 25, 50, 100];
         config.settings.permissionOptions = config.settings.permissionOptions || [];
-        config.theme.projectLogo = config.theme.projectLogo || "🤖";
+        config.theme.projectIcon = config.theme.projectIcon || "🤖";
         config.theme.projectName = config.theme.projectName || "Appwrite CMS";
 
-        config.groups = config.groups.map((g) => {
+        for (const groupId in config.groups) {
+            const g = config.groups[groupId];
+
             // g.icon = g.icon || '📁';
             g.isOpenedByDefault = g.isOpenedByDefault === undefined || g.isOpenedByDefault === null ? false : g.isOpenedByDefault;
             g.menuSort = g.menuSort || 1;
             g.parentGroupId = g.parentGroupId || null;
+        }
 
-            return g;
-        });
+        for (const panelId in config.panels) {
+            const p = config.panels[panelId];
 
-        config.panels = config.panels.map((p) => {
+            p.name = p.name || panelId;
+
             p.menuSort = p.menuSort || 1;
             p.groupId = p.groupId || null;
             p.defaultLimit = p.defaultLimit || 25;
             p.labels = p.labels || [];
+            p.actions = p.actions || {};
+
+            p.actions.create = p.actions.create || {};
+            p.actions.edit = p.actions.edit || {};
+            p.actions.view = p.actions.view || {};
+            p.actions.list = p.actions.list || {};
+
+            p.actions.create.blocks = p.actions.create.blocks || [];
+            p.actions.edit.blocks = p.actions.edit.blocks || [];
+            p.actions.view.blocks = p.actions.view.blocks || [];
+            p.actions.list.blocks = p.actions.list.blocks || [];
+
+            if (p.actions.edit.blocksReflectCreate) {
+                p.actions.edit.blocks = p.actions.create.blocks;
+            }
 
             p.actions.create.blocks = p.actions.create.blocks.map((b) => {
                 b.config = b.config || {};
@@ -185,10 +213,7 @@ export const actions: ActionTree<RootState, RootState> = {
 
                 return l;
             });
-
-            return p;
-        });
-
+        }
 
         commit('SET_CONFIG', config);
         AppwriteService.init(config);
@@ -221,21 +246,31 @@ export const actions: ActionTree<RootState, RootState> = {
             }
         };
 
-        const allGroups: any = config.groups.map((g) => {
-            return {
-                ...g,
-                panels: []
-            }
-        });
+        const allGroups: any = [];
+        for (const groupId in config.groups) {
+            allGroups.push({
+                ...config.groups[groupId],
+                panels: [],
+                id: groupId
+            })
+        }
 
-        for (const panel of config.panels) {
+        const panelsArray = [];
+        for (const panelId in config.panels) {
+            panelsArray.push({
+                ...config.panels[panelId],
+                id: panelId
+            })
+        }
+
+        for (const panel of panelsArray) {
             const groupId = panel.groupId;
             const group = allGroups.find((g: any) => g.id === groupId);
             group?.panels.push(panel);
         }
 
         const rootGroups: any = allGroups.filter((g: any) => g.parentGroupId === null).map((g: any) => mapRecursion(allGroups, g));
-        const rootPanels: any = config.panels.filter((p) => p.groupId === null);
+        const rootPanels: any = panelsArray.filter((p) => p.groupId === null);
 
         const menuTree: MenuTreeType = [
             ...rootGroups.map((g: any) => {
@@ -255,8 +290,6 @@ export const actions: ActionTree<RootState, RootState> = {
                 }
             })
         ].sort((a, b) => a < b ? -1 : 1);
-
-        console.log(menuTree);
 
         commit('SET_MENU_TREE', menuTree);
     },

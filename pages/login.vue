@@ -13,7 +13,16 @@
       bg-gradient-to-b
     "
   >
-    <div class="container flex items-center justify-center mx-auto">
+    <div
+      class="
+        container
+        flex flex-col
+        items-center
+        justify-center
+        mx-auto
+        space-y-4
+      "
+    >
       <div
         class="relative w-full max-w-lg p-8 bg-white rounded-md text-slate-900"
       >
@@ -33,7 +42,7 @@
               border-white
             "
           >
-            {{ config.theme.projectLogo }}
+            {{ config.theme.projectIcon }}
           </div>
         </div>
 
@@ -119,6 +128,19 @@
           </form>
         </div>
       </div>
+
+      <div class="text-center text-slate-600">
+        <p>
+          Copyright © 2021
+          <a
+            href="https://github.com/Meldiron/appwrite-cms"
+            class="text-slate-300 hover:underline"
+            target="_blank"
+            >AppwriteCMS</a
+          >
+          v{{ version }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -131,6 +153,7 @@ import { AppwriteService } from '~/services/appwrite'
 export default Vue.extend({
   data() {
     return {
+      version: process.env.APPVERSION,
       email: '',
       password: '',
       isLoading: false,

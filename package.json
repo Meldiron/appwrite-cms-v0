@@ -13,7 +13,6 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@types/marked": "^4.0.1",
-    "appwrite": "^5.0.0",
     "axios": "^0.24.0",
     "core-js": "^3.15.1",
     "marked": "^4.0.8",
@@ -33,6 +32,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
+    "meldiron-console-appwrite": "^4.0.4",
     "postcss": "^8.4.5",
     "prettier": "^2.3.2",
     "tailwindcss": "^3.0.7"

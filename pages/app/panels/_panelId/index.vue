@@ -360,14 +360,29 @@
       </tbody>
     </table>
 
-    <div class="flex items-center justify-center w-full mt-6">
-      <button class="w-40 px-8 py-2 bg-slate-200 text-slate-900 rounded-l-md">
-        Previous
-      </button>
+    <div class="flex items-start justify-between mt-6">
+      <div class="flex items-center justify-start space-x-2">
+        <p class="text-sm text-slate-500">Documents per page</p>
 
-      <button class="w-40 px-8 py-2 text-white bg-slate-900 rounded-r-md">
-        Next
-      </button>
+        <select
+          class="px-2 bg-white border-2 rounded-md  focus:outline-none focus:ring ring-slate-500 border-slate-300"
+        >
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+
+      <div class="flex items-end justify-center">
+        <button class="w-40 px-8 py-2 bg-slate-200 text-slate-900 rounded-l-md">
+          Previous
+        </button>
+
+        <button class="w-40 px-8 py-2 text-white bg-slate-900 rounded-r-md">
+          Next
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -379,9 +394,8 @@ export default Vue.extend({
   middleware: ['userOnly'],
 
   data() {
-    const panel = this.$store.state.config.config.panels.find(
-      (p: any) => p.id === this.$route.params.panelId
-    )
+    const panel =
+      this.$store.state.config.config.panels[this.$route.params.panelId]
 
     return {
       panel: panel || null,

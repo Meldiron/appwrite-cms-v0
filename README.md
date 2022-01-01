@@ -1,8 +1,10 @@
 ![Cover image](/static/cover.png)
 
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/Meldiron/appwrite-cms">![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)</a>
+
 # AppwriteCMS
 
-Hey there 👋 This project is WIP. I do not plan to finish it before Appwrite 0.12 release. After that, it's all about my determination.
+Hey there 👋 This project is work in progress. I do not plan to finish it before Appwrite 0.12 release.
 
 (intro)
 
@@ -20,16 +22,31 @@ Hey there 👋 This project is WIP. I do not plan to finish it before Appwrite 0
 
 Read more at [tutorial document](static/tutorial.md).
 
+## TODO
+
+- If on edit page, "back" should go either to view or list.. Somehow.. you should know where...
+- Currently we probably ignore enabled in actions in config
+- List page
+- Docs how to create new components (all 3 types)
+- Searching
+- Limiting
+- List + paginating
+- Labels
+- TODOS in code
+- Pouzi isLoading zo store aby si dal loading ikonku na action tlacidlo (save)
+
 ## Future update plan
 
-- Allow registration, probably, somehow
-- Permission management (team owners&members)
 - Dark theme
+- Mobile responsivity
+- Permission management (team owners&members)
 - Modular auth&storage&data library to allow other backends
 
 ## Contributing
 
-(contributing intro)
+All code contributions - including those of people having commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
+
+We truly ❤️ pull requests! Refer to information below in order to understand how to setup&build the project, see how folder structore works and what technologies we use.
 
 ### Build Setup
 

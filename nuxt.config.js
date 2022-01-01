@@ -8,6 +8,10 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
+  env: {
+    APPVERSION: '0.1.0',
+  },
+
   router: {
     middleware: 'loadConfig',
   },

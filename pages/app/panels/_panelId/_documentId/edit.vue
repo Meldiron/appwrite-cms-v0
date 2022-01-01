@@ -1,17 +1,19 @@
 <template>
   <div class="p-6 bg-white rounded-md">
     <form
-      v-on:submit.prevent="SET_ACTION('onCreateSave')"
+      v-if="document"
+      v-on:submit.prevent="SET_ACTION('onEditSave')"
       class="flex flex-col max-w-lg space-y-6"
     >
       <div
         :key="blockIndex"
-        v-for="(block, blockIndex) in panel.actions.create.blocks"
+        v-for="(block, blockIndex) in panel.actions.edit.blocks"
       >
         <component
           :ref="'createBlock' + blockIndex"
           v-bind:is="'Blocks' + block.type"
           :config="block.config"
+          :document="document"
           :appwrite="appwrite"
         ></component>
       </div>
@@ -34,11 +36,17 @@ export default Vue.extend({
     return {
       panelId: this.$route.params.panelId,
       panel: this.$store.state.config.config.panels[this.$route.params.panelId],
+      document: null as any,
       appwrite: AppwriteService.getAppwrite(),
     }
   },
 
-  async created() {},
+  async created() {
+    this.document = await AppwriteService.getDocument(
+      this.panelId,
+      this.$route.params.documentId
+    )
+  },
 
   computed: {
     ...mapGetters('headerActions', ['GET_OMITTER']),
@@ -47,7 +55,7 @@ export default Vue.extend({
   watch: {
     GET_OMITTER: {
       handler(newAction) {
-        if (newAction === 'onCreateSave') {
+        if (newAction === 'onEditSave') {
           this.onSubmit()
         }
       },
@@ -63,7 +71,7 @@ export default Vue.extend({
       let document = {}
 
       let i = 0
-      for (const block of this.panel.actions.create.blocks) {
+      for (const block of this.panel.actions.edit.blocks) {
         const component = this.$refs['createBlock' + i]
         let appendMethod = undefined
 
@@ -81,8 +89,9 @@ export default Vue.extend({
         i++
       }
 
-      const isSuccessful = await AppwriteService.createDocument(
+      const isSuccessful = await AppwriteService.updateDocument(
         this.panelId,
+        this.document.$id,
         document
       )
       if (isSuccessful) {
