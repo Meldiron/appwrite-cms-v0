@@ -37,7 +37,7 @@ export default Vue.extend({
       panelId: this.$route.params.panelId,
       panel: this.$store.state.config.config.panels[this.$route.params.panelId],
       document: null as any,
-      appwrite: AppwriteService.getAppwrite(),
+      appwrite: AppwriteService,
     }
   },
 

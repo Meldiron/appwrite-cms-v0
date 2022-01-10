@@ -1,27 +1,9 @@
 <template>
   <div
-    class="
-      flex
-      items-center
-      justify-center
-      w-screen
-      h-screen
-      overflow-y-auto
-      from-slate-900
-      via-slate-900
-      to-black
-      bg-gradient-to-b
-    "
+    class="flex items-center justify-center w-screen h-screen overflow-y-auto  from-slate-900 via-slate-900 to-black bg-gradient-to-b"
   >
     <div
-      class="
-        container
-        flex flex-col
-        items-center
-        justify-center
-        mx-auto
-        space-y-4
-      "
+      class="container flex flex-col items-center justify-center mx-auto space-y-4 "
     >
       <div
         class="relative w-full max-w-lg p-8 bg-white rounded-md text-slate-900"
@@ -56,50 +38,13 @@
             class="flex flex-col my-8 space-y-4"
           >
             <input
-              v-model="email"
-              class="
-                p-4
-                bg-white
-                border-4
-                rounded-md
-                border-slate-200
-                focus:outline-none focus:ring
-                ring-gray-600
-              "
-              type="email"
-              placeholder="E-mail address"
-            />
-            <input
-              v-model="password"
-              class="
-                p-4
-                bg-white
-                border-4
-                rounded-md
-                border-slate-200
-                focus:outline-none focus:ring
-                ring-gray-600
-              "
+              v-model="apiKey"
+              class="p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
               type="password"
-              placeholder="Password"
+              placeholder="Project API Key"
             />
             <button
-              class="
-                flex
-                items-center
-                justify-center
-                p-4
-                space-x-3
-                text-lg
-                font-semibold
-                border-4
-                rounded-md
-                bg-slate-900
-                text-slate-50
-                border-slate-900
-                focus:outline-none focus:ring
-                ring-gray-600
-              "
+              class="flex items-center justify-center p-4 space-x-3 text-lg font-semibold border-4 rounded-md  bg-slate-900 text-slate-50 border-slate-900 focus:outline-none focus:ring ring-gray-600"
             >
               <span>Login</span>
 
@@ -154,8 +99,7 @@ export default Vue.extend({
   data() {
     return {
       version: process.env.APPVERSION,
-      email: '',
-      password: '',
+      apiKey: '',
       isLoading: false,
     }
   },
@@ -167,10 +111,7 @@ export default Vue.extend({
 
       this.isLoading = true
 
-      const isSuccessful = await AppwriteService.login(
-        this.email,
-        this.password
-      )
+      const isSuccessful = await AppwriteService.login(this.apiKey)
       if (isSuccessful) {
         this.$router.push('/app')
       }

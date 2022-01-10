@@ -1,14 +1,21 @@
 import { ConfigType } from "~/store/config";
-import { Appwrite, Models } from "meldiron-console-appwrite";
+import { Client, Database, Storage, Models } from "node-appwrite";
 
 // @ts-ignore Because middleware sets this and noone ever loads data before middleware fills it
 let config: ConfigType = null;
 // @ts-ignore Because middleware sets this and noone ever loads data before middleware fills it
-let appwrite: Appwrite = null;
+let appwrite: Client = null;
 
 export const AppwriteService = {
     getAppwrite() {
         return appwrite;
+    },
+
+    _db() {
+        return new Database(this.getAppwrite());
+    },
+    _file() {
+        return new Storage(this.getAppwrite());
     },
 
     init(newConfig: ConfigType) {
@@ -19,17 +26,17 @@ export const AppwriteService = {
             return;
         }
 
-        appwrite = new Appwrite();
-
+        appwrite = new Client();
         appwrite
             .setEndpoint(config.appwrite.endpoint)
-            .setProject("console")
+            .setProject(config.appwrite.projectId)
+            .setJWT("INVALID_JWT");
     },
 
     async createDocument(collectionId: string, dataObject: any): Promise<boolean> {
         try {
             // TODO: Allow cusotm ID, allow custon read&write permissions
-            await appwrite.database.createDocument(collectionId, "unique()", dataObject, [], [])
+            await this._db().createDocument(collectionId, "unique()", dataObject, [], [])
 
             return true;
         } catch (err: any) {
@@ -42,7 +49,7 @@ export const AppwriteService = {
     async updateDocument(collectionId: string, documentId: string, dataObject: any): Promise<boolean> {
         try {
             // TODO: allow custon read&write permissions
-            await appwrite.database.updateDocument(collectionId, documentId, dataObject, [], [])
+            await this._db().updateDocument(collectionId, documentId, dataObject, [], [])
 
             return true;
         } catch (err: any) {
@@ -51,10 +58,10 @@ export const AppwriteService = {
         }
     },
 
-    async login(email: string, password: string): Promise<boolean> {
+    async login(apiKey: string): Promise<boolean> {
         try {
-            await appwrite.account.createSession(email, password);
-            await this.isLogged();
+            appwrite.setJWT(apiKey);
+            await this.isLogged(true);
             return true;
         } catch (err: any) {
             alert(err.message);
@@ -64,8 +71,7 @@ export const AppwriteService = {
 
     async logout(): Promise<boolean> {
         try {
-            await appwrite.account.deleteSession("current");
-
+            appwrite.setJWT("INVALID_JWT");
             return true;
         } catch (err: any) {
             alert(err.message);
@@ -73,23 +79,26 @@ export const AppwriteService = {
         }
     },
 
-    async isLogged(): Promise<boolean> {
+    async isLogged(throwError = false): Promise<boolean> {
         try {
-            await appwrite.account.get();
-            appwrite.setProject(config.appwrite.projectId).setMode("admin")
+            await this._db().listCollections();
             return true;
         }
         catch (err: any) {
-            appwrite.setProject("console").setMode("");
+            if (throwError) {
+                alert(err.message);
+            }
             return false;
         }
     },
 
     async getDocument(collectionId: string, documentId: string): Promise<any & Models.Document> {
-        return await appwrite.database.getDocument(collectionId, documentId);
+        return await this._db().getDocument(collectionId, documentId);
     },
 
     previewFile(fileId: string): URL {
-        return appwrite.storage.getFilePreview(fileId, 500, undefined, "center", undefined, undefined, undefined, undefined, undefined, undefined, undefined, "webp")
+        // TODO: URL
+        return new URL("http://google.com/");
+        // return this._file().getFilePreview(fileId, 500, undefined, "center", undefined, undefined, undefined, undefined, undefined, undefined, undefined, "webp")
     }
 }

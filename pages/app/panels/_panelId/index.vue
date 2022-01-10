@@ -39,7 +39,13 @@
         {{ documentsSum === 1 ? 'document' : 'documents' }} found
       </p>
       <div
-        class="overflow-y-auto border-2 rounded-md  bg-slate-900 border-slate-900"
+        class="
+          overflow-y-auto
+          border-2
+          rounded-md
+          bg-slate-900
+          border-slate-900
+        "
       >
         <table
           class="relative w-full overflow-hidden border-collapse table-fixed"
@@ -66,7 +72,14 @@
                 }"
                 v-for="(block, blockIndex) of panel.actions.list.blocks"
                 :key="blockIndex"
-                class="px-4 py-2 font-semibold text-white border-r-2  border-slate-800 bg-slate-900"
+                class="
+                  px-4
+                  py-2
+                  font-semibold
+                  text-white
+                  border-r-2 border-slate-800
+                  bg-slate-900
+                "
               >
                 {{ block.name }}
               </td>
@@ -85,7 +98,13 @@
                   v-if="panel.actions.view.blocks.length > 0"
                   :to="'/app/panels/' + panelId + '/' + document.$id + '/view'"
                   ><button
-                    class="p-2 rounded-md  bg-slate-200 text-slate-800 hover:bg-slate-300 hover:text-black"
+                    class="
+                      p-2
+                      rounded-md
+                      bg-slate-200
+                      text-slate-800
+                      hover:bg-slate-300 hover:text-black
+                    "
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +126,13 @@
                   :to="'/app/panels/' + panelId + '/' + document.$id + '/edit'"
                 >
                   <button
-                    class="p-2 rounded-md  bg-slate-900 text-slate-50 hover:bg-black hover:text-slate-300"
+                    class="
+                      p-2
+                      rounded-md
+                      bg-slate-900
+                      text-slate-50
+                      hover:bg-black hover:text-slate-300
+                    "
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +149,13 @@
                 <button
                   v-if="panel.canDeleteDocuments"
                   @click="onDeleteDocument(document)"
-                  class="p-2 text-red-800 bg-red-200 rounded-md  hover:bg-red-300"
+                  class="
+                    p-2
+                    text-red-800
+                    bg-red-200
+                    rounded-md
+                    hover:bg-red-300
+                  "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +195,15 @@
 
         <select
           v-model="currentlySelectedLimit"
-          class="px-2 bg-white border-2 rounded-md  focus:outline-none focus:ring ring-slate-500 border-slate-300"
+          class="
+            px-2
+            bg-white
+            border-2
+            rounded-md
+            focus:outline-none focus:ring
+            ring-slate-500
+            border-slate-300
+          "
         >
           <option
             :key="option"
@@ -234,10 +273,7 @@ export default Vue.extend({
       }
 
       if (confirm('Are you sure you want to delete this document?')) {
-        await AppwriteService.getAppwrite().database.deleteDocument(
-          this.panelId,
-          document.$id
-        )
+        await AppwriteService._db().deleteDocument(this.panelId, document.$id)
         this.updatePanel()
       }
     },
@@ -265,17 +301,16 @@ export default Vue.extend({
         orderTypes.push(this.label.sorts[orderKey])
       }
 
-      const appwriteResponse =
-        await AppwriteService.getAppwrite().database.listDocuments(
-          this.panelId,
-          this.label.queries,
-          this.currentlySelectedLimit + 1,
-          undefined,
-          this.cursor,
-          this.cursorDirection,
-          orderAttributes,
-          orderTypes
-        )
+      const appwriteResponse = await AppwriteService._db().listDocuments(
+        this.panelId,
+        this.label.queries,
+        this.currentlySelectedLimit + 1,
+        undefined,
+        this.cursor,
+        this.cursorDirection,
+        orderAttributes,
+        orderTypes
+      )
 
       this.documentsSum = appwriteResponse.sum
 

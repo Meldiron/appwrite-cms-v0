@@ -1445,7 +1445,7 @@
 
 "@tailwindcss/typography@^0.5.0":
   version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.0.tgz#47886ec46ac41e1211d24fea05301046d9b30906"
+  resolved "https://registry.npmjs.org/@tailwindcss/typography/-/typography-0.5.0.tgz"
   integrity sha512-1p/3C6C+JJziS/ghtG8ACYalbA2SyLJY27Pm33cVTlAoY6VQ7zfm2H64cPxUMBkVIlWXTtWHhZcZJPobMRmQAA==
   dependencies:
     lodash.castarray "^4.4.0"
@@ -1629,7 +1629,7 @@
 
 "@types/marked@^4.0.1":
   version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-4.0.1.tgz#d588a7bbc4d6551c5e75249bc106ffda96ae33c5"
+  resolved "https://registry.npmjs.org/@types/marked/-/marked-4.0.1.tgz"
   integrity sha512-ZigEmCWdNUU7IjZEuQ/iaimYdDHWHfTe3kg8ORfKjyGYd9RWumPoOJRQXB0bO+XLkNwzCthW3wUIQtANaEZ1ag==
 
 "@types/mime@^1":
@@ -2391,7 +2391,7 @@ async-each@^1.0.1:
 
 asynckit@^0.4.0:
   version "0.4.0"
-  resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
+  resolved "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
 at-least-node@^1.0.0:
@@ -3079,9 +3079,9 @@ colorette@^1.2.2:
   resolved "https://registry.npmjs.org/colorette/-/colorette-1.4.0.tgz"
   integrity sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==
 
-combined-stream@^1.0.6:
+combined-stream@^1.0.8:
   version "1.0.8"
-  resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
+  resolved "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz"
   integrity sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==
   dependencies:
     delayed-stream "~1.0.0"
@@ -3304,13 +3304,6 @@ create-require@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/create-require/-/create-require-1.1.1.tgz"
   integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
-
-cross-fetch@3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
-  integrity sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==
-  dependencies:
-    node-fetch "2.6.1"
 
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
@@ -3656,7 +3649,7 @@ defu@^5.0.0:
 
 delayed-stream@~1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
+  resolved "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
 
 depd@~1.1.2:
@@ -4572,13 +4565,13 @@ fork-ts-checker-webpack-plugin@^6.1.1:
     semver "^7.3.2"
     tapable "^1.0.0"
 
-form-data@^2.3.2:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.5.1.tgz#f2cbec57b5e59e23716e128fe44d4e5dd23895f4"
-  integrity sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==
+form-data@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz"
+  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
   dependencies:
     asynckit "^0.4.0"
-    combined-stream "^1.0.6"
+    combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
 fraction.js@^4.1.1:
@@ -5543,13 +5536,6 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.npmjs.org/isobject/-/isobject-3.0.1.tgz"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-form-data@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-form-data/-/isomorphic-form-data-2.0.0.tgz#9f6adf1c4c61ae3aefd8f110ab60fb9b143d6cec"
-  integrity sha512-TYgVnXWeESVmQSg4GLVbalmQ+B4NPi/H4eWxqALKj63KsUrcu301YDjBqaOw3h+cbak7Na4Xyps3BiptHtxTfg==
-  dependencies:
-    form-data "^2.3.2"
-
 jest-worker@^26.5.0:
   version "26.6.2"
   resolved "https://registry.npmjs.org/jest-worker/-/jest-worker-26.6.2.tgz"
@@ -5914,7 +5900,7 @@ map-visit@^1.0.0:
 
 marked@^4.0.8:
   version "4.0.8"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.8.tgz#ef127626ac65786460f9420d57cc8d5ffdcacbed"
+  resolved "https://registry.npmjs.org/marked/-/marked-4.0.8.tgz"
   integrity sha512-dkpJMIlJpc833hbjjg8jraw1t51e/eKDoG8TFOgc5O0Z77zaYKigYekTDop5AplRoKFGIaoazhYEhGkMtU3IeA==
 
 md5.js@^1.3.4:
@@ -5935,14 +5921,6 @@ mdn-data@2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.4.tgz"
   integrity sha512-iV3XNKw06j5Q7mi6h+9vbx23Tv7JkjEVgKHW4pimwyDGWm0OIQntJJ+u1C6mg6mK1EaTv42XQ7w76yuzH7M2cA==
-
-meldiron-console-appwrite@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/meldiron-console-appwrite/-/meldiron-console-appwrite-4.0.4.tgz#3fd6f0500127d1f9b01c42be4570af319306d14c"
-  integrity sha512-49czMQ58q7Y1emwdFnuGhoIc/HjLW2dr+mIPFO4inOhE7cUDKasWGBe4l7gCuFekfeaC8D9OBEqkbXshm8gHRA==
-  dependencies:
-    cross-fetch "3.1.4"
-    isomorphic-form-data "2.0.0"
 
 mem@^8.1.1:
   version "8.1.1"
@@ -6262,10 +6240,13 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
-node-fetch@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
-  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+node-appwrite@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/node-appwrite/-/node-appwrite-4.0.2.tgz"
+  integrity sha512-Khe2tuP7LEO80mSW5ijzyxWppsVuu2zZHFW14sJithGpkAs1PgPtZNBJTvwoHaBlnorjhiSd+PcIpibvIwhhbA==
+  dependencies:
+    axios "^0.24.0"
+    form-data "^4.0.0"
 
 node-fetch@^2.6.1:
   version "2.6.6"

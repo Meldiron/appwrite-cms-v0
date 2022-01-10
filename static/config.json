@@ -1,6 +1,6 @@
 {
   "appwrite": {
-    "endpoint": "https://dbdemos.appwrite.org/v1",
+    "endpoint": "https://demo.appwrite.io/v1",
     "projectId": "appwriteBlog"
   },
   "groups": {

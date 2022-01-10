@@ -32,7 +32,7 @@ export default Vue.extend({
       panel: panel || null,
       panelId: this.$route.params.panelId,
       document: null,
-      appwrite: AppwriteService.getAppwrite(),
+      appwrite: AppwriteService,
     }
   },
 
