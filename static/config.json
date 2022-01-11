@@ -13,6 +13,17 @@
   "settings": {
     "limitOptions": [2, 25]
   },
+  "dashboard": {
+    "motd": "Welcome to AppwriteCMS 👋 You can change this message in config.json. Make sure to feel administrator welcomed!!!",
+    "blocks": [
+      {
+        "type": "DashboardTitle",
+        "config": {
+          "value": "Hello Dashboard 🤖"
+        }
+      }
+    ]
+  },
   "panels": {
     "posts": {
       "searchAttributes": ["title"],

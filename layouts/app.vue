@@ -417,7 +417,7 @@
         <Nuxt />
       </div>
 
-      <div
+      <!-- <div
         v-if="pageType === 'homepage'"
         class="flex items-center justify-between p-4 bg-black text-slate-400"
       >
@@ -441,7 +441,7 @@
           >
           v{{ version }}
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

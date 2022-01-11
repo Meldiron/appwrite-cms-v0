@@ -6,6 +6,13 @@ export type ConfigType = {
         endpoint: string;
         projectId: string;
     },
+    dashboard: {
+        motd: string;
+        blocks: {
+            type: string;
+            config: any;
+        }[]
+    },
     settings: {
         permissionOptions: {
             // TODO: Use permissionOptions
@@ -156,6 +163,9 @@ export const actions: ActionTree<RootState, RootState> = {
         config.groups = config.groups || {};
         config.theme = config.theme || {};
         config.appwrite = config.appwrite || {};
+        config.dashboard = config.dashboard || {};
+
+        config.dashboard.blocks = config.dashboard.blocks || [];
 
         config.settings.limitOptions = config.settings.limitOptions || [10, 25, 50, 100];
         config.settings.permissionOptions = config.settings.permissionOptions || [];

@@ -1,7 +1,8 @@
 <template>
   <div class="container mx-auto">
     <div
-      class="relative w-full p-6 pl-20 overflow-hidden text-white border-2 rounded-md  bg-sky-500 border-sky-500"
+      v-if="config.dashboard.motd"
+      class="relative w-full p-6 pl-20 mb-6 overflow-hidden text-white border-2 rounded-md  bg-sky-500 border-sky-500"
     >
       <div
         class="
@@ -34,28 +35,54 @@
         </div>
       </div>
       <p class="ml-2">
-        In future, you can expect your dashboard here! For now, this will serve
-        as onboarding documentation.
+        {{ config.dashboard.motd }}
       </p>
     </div>
 
-    <div class="p-6 mt-6 bg-white rounded-md">
-      <div class="prose">
-        <h1>Dashboard will be ready soon...</h1>
+    <div
+      v-if="config.dashboard.blocks.length > 0"
+      class="p-6 bg-white rounded-md"
+    >
+      <div
+        :key="blockIndex"
+        v-for="(block, blockIndex) in config.dashboard.blocks"
+      >
+        <component
+          v-bind:is="'Blocks' + block.type"
+          :config="block.config"
+          :appwrite="appwrite"
+        ></component>
       </div>
+    </div>
+
+    <div
+      v-if="config.dashboard.blocks.length <= 0"
+      class="text-sm text-gray-400"
+    >
+      <p>
+        You can fill this empty dashboard space by configuring 'blocks' in
+        'dashboard' property of your config.json.
+      </p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
+import { AppwriteService } from '~/services/appwrite'
 
 export default Vue.extend({
+  computed: {
+    ...mapGetters('config', ['config']),
+  },
   layout: 'app',
   middleware: ['userOnly'],
   methods: {},
   data() {
-    return {}
+    return {
+      appwrite: AppwriteService,
+    }
   },
   async created() {},
 })

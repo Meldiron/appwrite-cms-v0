@@ -39,13 +39,7 @@
         {{ documentsSum === 1 ? 'document' : 'documents' }} found
       </p>
       <div
-        class="
-          overflow-y-auto
-          border-2
-          rounded-md
-          bg-slate-900
-          border-slate-900
-        "
+        class="overflow-y-auto border-2 rounded-md  bg-slate-900 border-slate-900"
       >
         <table
           class="relative w-full overflow-hidden border-collapse table-fixed"
@@ -72,14 +66,7 @@
                 }"
                 v-for="(block, blockIndex) of panel.actions.list.blocks"
                 :key="blockIndex"
-                class="
-                  px-4
-                  py-2
-                  font-semibold
-                  text-white
-                  border-r-2 border-slate-800
-                  bg-slate-900
-                "
+                class="px-4 py-2 font-semibold text-white border-r-2  border-slate-800 bg-slate-900"
               >
                 {{ block.name }}
               </td>
@@ -98,13 +85,7 @@
                   v-if="panel.actions.view.blocks.length > 0"
                   :to="'/app/panels/' + panelId + '/' + document.$id + '/view'"
                   ><button
-                    class="
-                      p-2
-                      rounded-md
-                      bg-slate-200
-                      text-slate-800
-                      hover:bg-slate-300 hover:text-black
-                    "
+                    class="p-2 rounded-md  bg-slate-200 text-slate-800 hover:bg-slate-300 hover:text-black"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -126,13 +107,7 @@
                   :to="'/app/panels/' + panelId + '/' + document.$id + '/edit'"
                 >
                   <button
-                    class="
-                      p-2
-                      rounded-md
-                      bg-slate-900
-                      text-slate-50
-                      hover:bg-black hover:text-slate-300
-                    "
+                    class="p-2 rounded-md  bg-slate-900 text-slate-50 hover:bg-black hover:text-slate-300"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -149,13 +124,7 @@
                 <button
                   v-if="panel.canDeleteDocuments"
                   @click="onDeleteDocument(document)"
-                  class="
-                    p-2
-                    text-red-800
-                    bg-red-200
-                    rounded-md
-                    hover:bg-red-300
-                  "
+                  class="p-2 text-red-800 bg-red-200 rounded-md  hover:bg-red-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -195,15 +164,7 @@
 
         <select
           v-model="currentlySelectedLimit"
-          class="
-            px-2
-            bg-white
-            border-2
-            rounded-md
-            focus:outline-none focus:ring
-            ring-slate-500
-            border-slate-300
-          "
+          class="px-2 bg-white border-2 rounded-md  focus:outline-none focus:ring ring-slate-500 border-slate-300"
         >
           <option
             :key="option"
@@ -224,7 +185,7 @@
                 ? 'text-white bg-slate-900 hover:bg-black hover:text-slate-200'
                 : 'bg-slate-200 text-slate-900'
             "
-            class="w-40 px-8 py-2 border-r-2 border-slate-700"
+            class="w-40 px-8 py-2 border-r-2 border-slate-300"
           >
             Previous
           </button>
