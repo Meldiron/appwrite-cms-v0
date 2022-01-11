@@ -30,7 +30,7 @@ export const AppwriteService = {
         appwrite
             .setEndpoint(config.appwrite.endpoint)
             .setProject(config.appwrite.projectId)
-            .setJWT("INVALID_JWT");
+            .setKey(localStorage.getItem("API_KEY") || "INVALID_KEY");
     },
 
     async createDocument(collectionId: string, dataObject: any): Promise<boolean> {
@@ -60,7 +60,8 @@ export const AppwriteService = {
 
     async login(apiKey: string): Promise<boolean> {
         try {
-            appwrite.setJWT(apiKey);
+            appwrite.setKey(apiKey);
+            localStorage.setItem("API_KEY", apiKey);
             await this.isLogged(true);
             return true;
         } catch (err: any) {
@@ -71,7 +72,8 @@ export const AppwriteService = {
 
     async logout(): Promise<boolean> {
         try {
-            appwrite.setJWT("INVALID_JWT");
+            appwrite.setKey("INVALID_KEY");
+            localStorage.setItem("API_KEY", "INVALID_KEY");
             return true;
         } catch (err: any) {
             alert(err.message);
