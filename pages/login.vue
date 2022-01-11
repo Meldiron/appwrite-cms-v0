@@ -6,7 +6,7 @@
       class="container flex flex-col items-center justify-center mx-auto space-y-4 "
     >
       <div
-        class="relative w-full max-w-lg p-8 bg-white rounded-md text-slate-900"
+        class="relative w-full max-w-lg p-8 pb-2 bg-white rounded-md  text-slate-900"
       >
         <div class="absolute left-0 flex justify-center w-full -top-12">
           <div
@@ -70,6 +70,23 @@
                 ></path>
               </svg>
             </button>
+
+            <div
+              class="flex flex-col items-center pt-4 space-y-1 text-xs  text-slate-300"
+            >
+              <a
+                class="hover:underline"
+                target="blank"
+                :href="
+                  config.appwrite.endpoint.split('/v1').join('/') +
+                  'console/home?project=' +
+                  config.appwrite.projectId
+                "
+              >
+                {{ config.appwrite.endpoint }}
+              </a>
+              <p>{{ config.appwrite.projectId }}</p>
+            </div>
           </form>
         </div>
       </div>
