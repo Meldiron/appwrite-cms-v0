@@ -34,9 +34,9 @@
           </h1>
 
           <form
-            if="loginForm"
-            action="/login"
-            method="POST"
+            id="loginform"
+            action="/app"
+            method="GET"
             v-on:submit="onLogin($event)"
             class="flex flex-col my-8 space-y-4"
           >
@@ -128,7 +128,16 @@ export default Vue.extend({
   },
   methods: {
     async onLogin(e: any) {
-      console.log(e)
+      e.preventDefault()
+      e.stopPropagation()
+
+      const form = document.querySelector('#loginform') as any
+
+      if (form.submitted) {
+        return
+      }
+
+      form.submitted = true
 
       if (this.isLoading) {
         return
@@ -138,7 +147,10 @@ export default Vue.extend({
 
       const isSuccessful = await AppwriteService.login(this.apiKey)
       if (isSuccessful) {
-        this.$router.push('/app')
+        form.submitted = false
+        form.submit()
+
+        // this.$router.push('/app')
       }
 
       this.isLoading = false
