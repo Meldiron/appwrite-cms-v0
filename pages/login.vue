@@ -38,12 +38,16 @@
             class="flex flex-col my-8 space-y-4"
           >
             <input
+              autocomplete="current-password"
+              autofocus="autofocus"
+              name="password"
               v-model="apiKey"
               class="p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
               type="password"
               placeholder="Project API Key"
             />
             <button
+              type="submit"
               class="flex items-center justify-center p-4 space-x-3 text-lg font-semibold border-4 rounded-md  bg-slate-900 text-slate-50 border-slate-900 focus:outline-none focus:ring ring-gray-600"
             >
               <span>Login</span>
