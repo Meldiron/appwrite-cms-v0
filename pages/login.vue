@@ -42,6 +42,7 @@
             class="flex flex-col my-8 space-y-4"
           >
             <input
+              id="username"
               autocomplete="username"
               name="username"
               type="text"
@@ -49,8 +50,9 @@
               class="hidden"
             />
             <input
-              name="password"
+              name="current-password"
               autocomplete="current-password"
+              id="current-password"
               v-model="apiKey"
               class="p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
               type="password"
