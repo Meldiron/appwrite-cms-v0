@@ -1,0 +1,47 @@
+const Query = {
+  equal: (attribute, value) => {
+    return Query.addQuery(attribute, "equal", value);
+  },
+
+  notEqual: (attribute, value) => {
+    return Query.addQuery(attribute, "notEqual", value);
+  },
+
+  lesser: (attribute, value) => {
+    return Query.addQuery(attribute, "lesser", value);
+  },
+
+  lesserEqual: (attribute, value) => {
+    return Query.addQuery(attribute, "lesserEqual", value);
+  },
+
+  greater: (attribute, value) => {
+    return Query.addQuery(attribute, "greater", value);
+  },
+
+  greaterEqual: (attribute, value) => {
+    return Query.addQuery(attribute, "greaterEqual", value);
+  },
+
+  search: (attribute, value) => {
+    return Query.addQuery(attribute, "search", value);
+  },
+  addQuery: (attribute, oper, value) => {
+    if(value instanceof Array) {
+      const values = value.map((v) => {
+      	return Query.parseValues(v);
+      }).join(",");
+      
+      return attribute + '.' + oper + '(' + values + ')';
+    } else {
+      return attribute + '.' + oper + '(' + Query.parseValues(value) + ')';
+    }
+  },
+  parseValues: (value) => {
+    return typeof value === "string" || value instanceof String
+      ? '"' + value + '"'
+      : value;
+  }
+}
+
+module.exports = Query;
