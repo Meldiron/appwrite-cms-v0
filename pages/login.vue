@@ -34,15 +34,23 @@
           </h1>
 
           <form
+            autocomplete="on"
             id="loginform"
-            action="/app"
+            action="/login"
             method="GET"
-            v-on:submit="onLogin($event)"
+            v-on:submit.prevent="onLogin($event)"
             class="flex flex-col my-8 space-y-4"
           >
-            <input name="username" type="text" value="apiKey" />
+            <input
+              autocomplete="username"
+              name="username"
+              type="text"
+              value="apiKey"
+              class="hidden"
+            />
             <input
               name="password"
+              autocomplete="current-password"
               v-model="apiKey"
               class="p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
               type="password"
@@ -128,17 +136,6 @@ export default Vue.extend({
   },
   methods: {
     async onLogin(e: any) {
-      e.preventDefault()
-      e.stopPropagation()
-
-      const form = document.querySelector('#loginform') as any
-
-      if (form.submitted) {
-        return
-      }
-
-      form.submitted = true
-
       if (this.isLoading) {
         return
       }
@@ -147,10 +144,7 @@ export default Vue.extend({
 
       const isSuccessful = await AppwriteService.login(this.apiKey)
       if (isSuccessful) {
-        form.submitted = false
-        form.submit()
-
-        // this.$router.push('/app')
+        this.$router.push('/app')
       }
 
       this.isLoading = false
