@@ -160,7 +160,7 @@ export const actions: ActionTree<RootState, RootState> = {
         config.settings.limitOptions = config.settings.limitOptions || [10, 25, 50, 100];
         config.settings.permissionOptions = config.settings.permissionOptions || [];
         config.theme.projectIcon = config.theme.projectIcon || "🤖";
-        config.theme.projectName = config.theme.projectName || "Appwrite CMS";
+        config.theme.projectName = config.theme.projectName || "AppwriteCMS";
 
         for (const groupId in config.groups) {
             const g = config.groups[groupId];

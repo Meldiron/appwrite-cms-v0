@@ -1,18 +1,7 @@
 <template>
   <div class="container mx-auto">
     <div
-      class="
-        relative
-        w-full
-        p-6
-        pl-20
-        overflow-hidden
-        text-white
-        border-2
-        rounded-md
-        bg-sky-500
-        border-sky-500
-      "
+      class="relative w-full p-6 pl-20 overflow-hidden text-white border-2 rounded-md  bg-sky-500 border-sky-500"
     >
       <div
         class="
@@ -28,16 +17,7 @@
         "
       >
         <div
-          class="
-            flex
-            items-center
-            justify-center
-            w-32
-            h-32
-            rounded-full
-            bg-sky-600
-            text-sky-500
-          "
+          class="flex items-center justify-center w-32 h-32 rounded-full  bg-sky-600 text-sky-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,32 +40,23 @@
     </div>
 
     <div class="p-6 mt-6 bg-white rounded-md">
-      <div class="prose" v-html="markdownToHtml()"></div>
+      <div class="prose">
+        <h1>Dashboard will be ready soon...</h1>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import * as Marked from 'marked'
-
-declare const marked: any // Imported by nuxt as plugin
 
 export default Vue.extend({
   layout: 'app',
   middleware: ['userOnly'],
-  methods: {
-    markdownToHtml() {
-      return Marked.marked(this.markdown)
-    },
-  },
+  methods: {},
   data() {
-    return {
-      markdown: 'Loading...',
-    }
+    return {}
   },
-  async created() {
-    this.markdown = await this.$axios.$get('/tutorial.md')
-  },
+  async created() {},
 })
 </script>

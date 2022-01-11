@@ -1,39 +1,36 @@
 ![Cover image](/static/cover.png)
 
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/Meldiron/appwrite-cms">![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)</a>
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMeldiron%2Fappwrite-cms)
+_Documentation is hosted on [GitBook](https://meldiron-appwrite.gitbook.io/appwrite-cms/). Please refer to this website when looking for any guides._
 
 # AppwriteCMS
 
-Hey there 👋 This project is work in progress. I do not plan to finish it before Appwrite 0.12 release.
+Hey there 👋
 
-(intro)
+Happy to see you here... Since you are looking for Appwrite admin panel, you already know what Appwrite is, right... Right?!?!
 
-## Setup
+If for whatever reason you never heard about Appwrite, please check out their [Website](https://appwrite.io/) to learn more about Appwrite. Believe it or not, you can't use AppwriteCMS without Appwrite 😬
 
-- Download ZIP from releases
-- Upload to FTP (or whatever)
-- Write config.json
-- Configure appwrite
-  - Editors team and proper permissions on collection&documents
-  - Add platform
-  - Custom domain on same root domain
+With that said...
 
-## Usage
+AppwriteCMS is headless CMS for your Appwrite database. Appwrite allows you to manage your database, but the view is too developer-ish and allows zero customization. In the end, it is a tool for developer, not copywriter... That's where AppwriteCMS comes into play! Connect AppwriteCMS to any Appwrite project and configure it as much as you need. AppwriteCMS even allows you to write your own components to achieve any interface your project needs. You can learn more in our [official documentation](https://meldiron-appwrite.gitbook.io/appwrite-cms/).
 
-Read more at [tutorial document](static/tutorial.md).
+Oh, I almost forgot...
 
-## TODO
+I never liked when people miss-spell my name from Matej to Madžejč. Products feel the same! 🤖 Let's not offend them, okay?
 
+The correct spelling is `Appwrite`, not `AppWrite`. Just like that, this is product is called `AppwriteCMS`, not `Apppwrite CMS`, and absolutely not `AppWrite CMS`.
+
+Thanks for your attention open source community! See you later in GitHub issues section 👋
+
+## Future plans
+
+- Offset pagination
+- Cursor pagination improvements (dont think we should use previous direction EVER)
 - Docs how to create new components (all 3 types)
 - Searching
 - TODOS in code
 - Pouzi isLoading zo store aby si dal loading ikonku na action tlacidlo (save)
 - isLoading po stranke asi vsade chyba
-
-## Future update plan
-
 - Dark theme
 - Mobile responsivity
 - Permission management (team owners&members)
@@ -41,11 +38,13 @@ Read more at [tutorial document](static/tutorial.md).
 
 ## Contributing
 
+Fun fact, we are using Nuxt! 🥳 If you understand Vue, you are more than ready to start building components. If you don't, eh, you will figure it out 😅 Don't be scared, components are tiny HTML&CSS&JS snippets that only uses Vue to bind data between HTML an JavaScript.
+
 All code contributions - including those of people having commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
 
-We truly ❤️ pull requests! Refer to information below in order to understand how to setup&build the project, see how folder structore works and what technologies we use.
+We truly ❤️ pull requests! Refer to information below in order to understand how to setup&build the project and see how folder structore works.
 
-### Build Setup
+## Build Setup
 
 ```bash
 # install dependencies
