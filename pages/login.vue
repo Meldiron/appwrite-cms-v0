@@ -34,12 +34,14 @@
           </h1>
 
           <form
-            v-on:submit.prevent="onLogin()"
+            if="loginForm"
+            action="/login"
+            method="POST"
+            v-on:submit="onLogin($event)"
             class="flex flex-col my-8 space-y-4"
           >
+            <input name="username" type="text" value="apiKey" />
             <input
-              autocomplete="current-password"
-              autofocus="autofocus"
               name="password"
               v-model="apiKey"
               class="p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
@@ -125,7 +127,9 @@ export default Vue.extend({
     }
   },
   methods: {
-    async onLogin() {
+    async onLogin(e: any) {
+      console.log(e)
+
       if (this.isLoading) {
         return
       }
