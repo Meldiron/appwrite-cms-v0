@@ -38,7 +38,7 @@
             id="loginform"
             action="/login"
             method="GET"
-            @submit="onLogin($event)"
+            v-on:submit.prevent="onLogin($event)"
             class="flex flex-col my-8 space-y-4"
           >
             <input
@@ -146,7 +146,17 @@ export default Vue.extend({
 
       const isSuccessful = await AppwriteService.login(this.apiKey)
       if (isSuccessful) {
-        // this.$router.push('/app')
+        // @ts-ignore
+        if (window.PasswordCredential) {
+          // @ts-ignore
+          const passwordCredential = new PasswordCredential({
+            id: 'apiKey',
+            password: this.apiKey,
+          })
+          navigator.credentials.store(passwordCredential)
+        }
+
+        this.$router.push('/app')
       }
 
       this.isLoading = false
