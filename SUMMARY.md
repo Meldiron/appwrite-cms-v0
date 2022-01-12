@@ -22,3 +22,7 @@
 * [🧱 Create Block](components/create-block.md)
 * [🧱 Edit Block](components/edit-block.md)
 * [🧱 Dashboard Block](components/dashboard-block.md)
+
+## 👽 Advanced
+
+* [✉ Email Authentication](advanced/email-authentication.md)
