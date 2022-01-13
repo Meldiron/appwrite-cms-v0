@@ -21,8 +21,8 @@
 
 ## 🏗 Components
 
+* [🧱 Form Block](components/form-block.md)
+* [🧱 Detail Block](components/detail-block.md)
 * [🧱 List Block](components/list-block.md)
-* [🧱 View Block](components/view-block.md)
-* [🧱 Create Block](components/create-block.md)
-* [🧱 Edit Block](components/edit-block.md)
 * [🧱 Dashboard Block](components/dashboard-block.md)
+* [🧱 Presentation Block](components/presentation-block.md)
