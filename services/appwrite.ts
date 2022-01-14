@@ -36,7 +36,7 @@ export const AppwriteService = {
     async createDocument(collectionId: string, dataObject: any): Promise<boolean> {
         try {
             // TODO: Allow cusotm ID, allow custon read&write permissions
-            await this._db().createDocument(collectionId, "unique()", dataObject, [], [])
+            await this._db().createDocument(collectionId, "unique()", dataObject, ['role:all'], [])
 
             return true;
         } catch (err: any) {
@@ -49,7 +49,7 @@ export const AppwriteService = {
     async updateDocument(collectionId: string, documentId: string, dataObject: any): Promise<boolean> {
         try {
             // TODO: allow custon read&write permissions
-            await this._db().updateDocument(collectionId, documentId, dataObject, [], [])
+            await this._db().updateDocument(collectionId, documentId, dataObject, ['role:all'], [])
 
             return true;
         } catch (err: any) {
@@ -98,9 +98,11 @@ export const AppwriteService = {
         return await this._db().getDocument(collectionId, documentId);
     },
 
-    previewFile(fileId: string): URL {
-        // TODO: URL
-        return new URL("http://google.com/");
-        // return this._file().getFilePreview(fileId, 500, undefined, "center", undefined, undefined, undefined, undefined, undefined, undefined, undefined, "webp")
+    previewFile(fileId: string): string {
+        return 'https://demo.appwrite.io/v1/storage/files/' + fileId + '/view?project=appwriteBlog&width=500&output=webp&gravity=center';
+    },
+
+    async uploadFile(fileId: string, file: any, read: string[], write: string[]) {
+        return await this._file().createFile.bind(this._file())(fileId, file, read, write);
     }
 }

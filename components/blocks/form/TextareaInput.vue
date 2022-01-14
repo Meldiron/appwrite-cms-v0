@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col space-y-1">
     <textarea
       class="
         w-full
@@ -15,6 +15,9 @@
       type="text"
       :placeholder="config.placeholder"
     />
+    <p class="text-sm italic font-light text-slate-400" v-if="config.note">
+      {{ config.note }}
+    </p>
   </div>
 </template>
 

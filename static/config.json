@@ -3,34 +3,34 @@
     "endpoint": "https://demo.appwrite.io/v1",
     "projectId": "appwriteBlog"
   },
+  "theme": {
+    "projectName": "Daruj Kupón",
+    "projectIcon": "🎁"
+  },
   "groups": {
-    "content": {
-      "name": "Content",
-      "icon": "📃",
+    "marketing": {
+      "name": "Marketing",
+      "icon": "📖",
       "isOpenedByDefault": true
     }
   },
-  "settings": {
-    "limitOptions": [2, 25]
-  },
   "dashboard": {
-    "motd": "Welcome to AppwriteCMS 👋 You can change this message in config.json. Make sure to feel administrator welcomed!!!",
+    "motd": "Welcome to the CMS 👋",
     "blocks": [
       {
         "type": "DashboardTitle",
         "config": {
-          "value": "Hello Dashboard 🤖"
+          "value": "Dashboard components are being prepared ..."
         }
       }
     ]
   },
   "panels": {
-    "posts": {
-      "searchAttributes": ["title"],
-      "description": "Articles visible on landing page.",
-      "icon": "📑",
-      "groupId": "content",
-      "name": "Posts",
+    "blogNews": {
+      "description": "News about the product on website. NOT NEWSLETTER!",
+      "icon": "📰",
+      "groupId": "marketing",
+      "name": "News",
       "labels": {},
       "actions": {
         "list": {
@@ -45,44 +45,96 @@
             },
             {
               "name": "Title",
-              "width": "50%",
+              "width": "500px",
               "type": "ListStringValue",
               "config": {
                 "attributeKey": "title"
               }
             },
             {
-              "name": "Text",
-              "width": "50%",
+              "name": "Published?",
               "type": "ListStringValue",
               "config": {
-                "attributeKey": "content"
+                "attributeKey": "isPublished"
+              }
+            },
+            {
+              "name": "Release Date",
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "publishedAt"
               }
             }
           ]
         },
-
-        "view": {
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "create": {
           "blocks": [
             {
               "type": "PresentationDivider",
               "config": {
-                "text": "Your Article",
-                "icon": "🌈"
+                "text": "General Information",
+                "icon": "ℹ️"
               }
             },
             {
-              "type": "DetailStringValue",
+              "type": "FormTextInput",
               "config": {
-                "attributeKey": "title",
-                "attributeName": "Article title"
+                "placeholder": "Title",
+                "attributeKey": "title"
               }
             },
             {
-              "type": "DetailStringValue",
+              "type": "FormTextareaInput",
               "config": {
-                "attributeKey": "content",
-                "attributeName": "Article text"
+                "placeholder": "Content",
+                "attributeKey": "content"
+              }
+            }
+          ]
+        }
+      }
+    },
+
+    "blogArticles": {
+      "description": "Articles about gifts, friendship or relations.",
+      "icon": "📄",
+      "groupId": "marketing",
+      "name": "Articles",
+      "labels": {},
+      "actions": {
+        "list": {
+          "blocks": [
+            {
+              "name": "Appwrite ID",
+              "width": "250px",
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "$id"
+              }
+            },
+            {
+              "name": "Title",
+              "width": "500px",
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "title"
+              }
+            },
+            {
+              "name": "Published?",
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "isPublished"
+              }
+            },
+            {
+              "name": "Featured Index",
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "featuredIndex"
               }
             }
           ]
@@ -111,6 +163,72 @@
               "config": {
                 "placeholder": "Content",
                 "attributeKey": "content"
+              }
+            }
+          ]
+        }
+      }
+    },
+
+    "blogAuthors": {
+      "description": "Authors of any marketing-related publications.",
+      "icon": "👱‍♀️",
+      "groupId": "marketing",
+      "name": "Authors",
+      "labels": {},
+      "actions": {
+        "list": {
+          "blocks": [
+            {
+              "name": "Appwrite ID",
+              "width": "250px",
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "$id"
+              }
+            },
+            {
+              "name": "Name",
+              "type": "ListStringValue",
+              "config": {
+                "attributeKey": "name"
+              }
+            }
+          ]
+        },
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "create": {
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "config": {
+                "text": "General Information",
+                "icon": "ℹ️"
+              }
+            },
+            {
+              "type": "FormTextInput",
+              "config": {
+                "placeholder": "Full name",
+                "note": "Or username... It is public!",
+                "attributeKey": "name"
+              }
+            },
+            {
+              "type": "FormTextareaInput",
+              "config": {
+                "placeholder": "About autor",
+                "note": "Few sentence bio.",
+                "attributeKey": "bio"
+              }
+            },
+            {
+              "type": "FormImageInput",
+              "config": {
+                "placeholder": "Profile picture",
+                "attributeKey": "photoFileId"
               }
             }
           ]

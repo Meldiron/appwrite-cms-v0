@@ -2,7 +2,7 @@
   <div class="p-6 bg-white rounded-md">
     <form
       v-on:submit.prevent="SET_ACTION('onCreateSave')"
-      class="flex flex-col max-w-lg space-y-6"
+      class="flex flex-col max-w-xl space-y-6"
     >
       <div
         :key="blockIndex"

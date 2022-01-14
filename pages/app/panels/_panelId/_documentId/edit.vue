@@ -3,7 +3,7 @@
     <form
       v-if="document"
       v-on:submit.prevent="SET_ACTION('onEditSave')"
-      class="flex flex-col max-w-lg space-y-6"
+      class="flex flex-col max-w-xl space-y-6"
     >
       <div
         :key="blockIndex"
