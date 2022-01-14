@@ -64,12 +64,20 @@ export type ConfigType = {
                 edit: {
                     blocksReflectCreate: boolean, // Optional
                     blocks: {
+                        note: string;
+                        name: string;
+                        attribute: string;
+                        array: boolean;
                         type: string;
                         config: any;
                     }[]
                 },
                 create: {
                     blocks: {
+                        note: string;
+                        name: string;
+                        attribute: string;
+                        array: boolean;
                         type: string;
                         config: any;
                     }[]
@@ -80,10 +88,15 @@ export type ConfigType = {
                         name: string;
                         type: string;
                         config: any;
+                        attribute: string;
                     }[]
                 },
                 view: {
                     blocks: {
+                        note: string;
+                        name: string;
+                        attribute: string;
+                        array: boolean;
                         type: string;
                         config: any;
                     }[]
@@ -211,19 +224,23 @@ export const actions: ActionTree<RootState, RootState> = {
 
             p.actions.create.blocks = p.actions.create.blocks.map((b) => {
                 b.config = b.config || {};
+                b.array = b.array == undefined || b.array === null ? false : b.array;
                 return b;
             });
             p.actions.edit.blocks = p.actions.edit.blocks.map((b) => {
                 b.config = b.config || {};
+                b.array = b.array == undefined || b.array === null ? false : b.array;
                 return b;
             });
             p.actions.view.blocks = p.actions.view.blocks.map((b) => {
                 b.config = b.config || {};
+                b.array = b.array == undefined || b.array === null ? false : b.array;
                 return b;
             });
             p.actions.list.blocks = p.actions.list.blocks.map((b) => {
                 b.config = b.config || {};
                 b.name = b.name || "Unnamed";
+                b.array = b.array == undefined || b.array === null ? false : b.array;
                 return b;
             });
 

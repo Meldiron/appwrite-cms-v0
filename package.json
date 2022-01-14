@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "dev-win": "nuxt",
     "dev": "npm run fix-appwrite && nuxt",
     "build": "npm run fix-appwrite && nuxt generate",
     "start": "npm run fix-appwrite nuxt start",

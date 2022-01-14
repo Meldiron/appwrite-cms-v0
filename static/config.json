@@ -26,44 +26,34 @@
     ]
   },
   "panels": {
-    "blogNews": {
-      "description": "News about the product on website. NOT NEWSLETTER!",
-      "icon": "📰",
-      "groupId": "marketing",
-      "name": "News",
+    "test": {
+      "description": "Test",
+      "icon": "🤖",
+      "groupId": null,
+      "name": "Test",
       "labels": {},
       "actions": {
         "list": {
           "blocks": [
             {
-              "name": "Appwrite ID",
-              "width": "250px",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "$id"
-              }
+              "width": "100px",
+              "name": "Public?",
+              "type": "ListBooleanValue",
+              "attribute": "boolVal",
+              "config": {}
             },
             {
-              "name": "Title",
-              "width": "500px",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "title"
-              }
+              "width": "200px",
+              "name": "Created Date",
+              "type": "ListUnixTimestampValue",
+              "attribute": "createdAt",
+              "config": {}
             },
             {
-              "name": "Published?",
+              "name": "Created Date",
               "type": "ListStringValue",
-              "config": {
-                "attributeKey": "isPublished"
-              }
-            },
-            {
-              "name": "Release Date",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "publishedAt"
-              }
+              "attribute": "tags",
+              "config": {}
             }
           ]
         },
@@ -73,162 +63,25 @@
         "create": {
           "blocks": [
             {
-              "type": "PresentationDivider",
-              "config": {
-                "text": "General Information",
-                "icon": "ℹ️"
-              }
+              "type": "FormBooleanInput",
+              "attribute": "boolVal",
+              "name": "Is article published?",
+              "note": "Test of a note",
+              "config": {}
+            },
+            {
+              "type": "FormUnixTimestampInput",
+              "attribute": "createdAt",
+              "name": "Publish date",
+              "config": {}
             },
             {
               "type": "FormTextInput",
+              "array": true,
+              "attribute": "tags",
+              "name": "Array of tags",
               "config": {
-                "placeholder": "Title",
-                "attributeKey": "title"
-              }
-            },
-            {
-              "type": "FormTextareaInput",
-              "config": {
-                "placeholder": "Content",
-                "attributeKey": "content"
-              }
-            }
-          ]
-        }
-      }
-    },
-
-    "blogArticles": {
-      "description": "Articles about gifts, friendship or relations.",
-      "icon": "📄",
-      "groupId": "marketing",
-      "name": "Articles",
-      "labels": {},
-      "actions": {
-        "list": {
-          "blocks": [
-            {
-              "name": "Appwrite ID",
-              "width": "250px",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "$id"
-              }
-            },
-            {
-              "name": "Title",
-              "width": "500px",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "title"
-              }
-            },
-            {
-              "name": "Published?",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "isPublished"
-              }
-            },
-            {
-              "name": "Featured Index",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "featuredIndex"
-              }
-            }
-          ]
-        },
-        "edit": {
-          "blocksReflectCreate": true
-        },
-        "create": {
-          "blocks": [
-            {
-              "type": "PresentationDivider",
-              "config": {
-                "text": "Post editor",
-                "icon": "👨‍💼"
-              }
-            },
-            {
-              "type": "FormTextInput",
-              "config": {
-                "placeholder": "Title",
-                "attributeKey": "title"
-              }
-            },
-            {
-              "type": "FormTextareaInput",
-              "config": {
-                "placeholder": "Content",
-                "attributeKey": "content"
-              }
-            }
-          ]
-        }
-      }
-    },
-
-    "blogAuthors": {
-      "description": "Authors of any marketing-related publications.",
-      "icon": "👱‍♀️",
-      "groupId": "marketing",
-      "name": "Authors",
-      "labels": {},
-      "actions": {
-        "list": {
-          "blocks": [
-            {
-              "name": "Appwrite ID",
-              "width": "250px",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "$id"
-              }
-            },
-            {
-              "name": "Name",
-              "type": "ListStringValue",
-              "config": {
-                "attributeKey": "name"
-              }
-            }
-          ]
-        },
-        "edit": {
-          "blocksReflectCreate": true
-        },
-        "create": {
-          "blocks": [
-            {
-              "type": "PresentationDivider",
-              "config": {
-                "text": "General Information",
-                "icon": "ℹ️"
-              }
-            },
-            {
-              "type": "FormTextInput",
-              "config": {
-                "placeholder": "Full name",
-                "note": "Or username... It is public!",
-                "attributeKey": "name"
-              }
-            },
-            {
-              "type": "FormTextareaInput",
-              "config": {
-                "placeholder": "About autor",
-                "note": "Few sentence bio.",
-                "attributeKey": "bio"
-              }
-            },
-            {
-              "type": "FormImageInput",
-              "config": {
-                "placeholder": "Profile picture",
-                "attributeKey": "photoFileId"
+                "placeholder": "Your tag"
               }
             }
           ]

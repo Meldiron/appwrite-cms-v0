@@ -13,6 +13,6 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  props: ['config', 'document', 'appwrite'],
+  props: ['config', 'document', 'appwrite', 'documentValue'],
 })
 </script>

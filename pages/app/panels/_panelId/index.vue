@@ -149,6 +149,7 @@
                   v-bind:is="'Blocks' + block.type"
                   :config="block.config"
                   :document="document"
+                  :documentValue="document[block.attribute]"
                   :appwrite="appwrite"
                 ></component>
               </td>

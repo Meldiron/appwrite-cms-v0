@@ -4,7 +4,7 @@
       class="text-lg"
       v-bind:class="documentValue ? 'text-slate-900' : 'text-slate-400'"
     >
-      {{ shortify(documentValue ? documentValue.toString() : 'Not set') }}
+      {{ datify(documentValue ? documentValue : undefined) }}
     </p>
   </div>
 </template>
@@ -14,12 +14,13 @@ import Vue from 'vue'
 export default Vue.extend({
   props: ['config', 'document', 'appwrite', 'documentValue'],
   methods: {
-    shortify(str: string) {
-      if (str.length <= 50) {
-        return str
+    datify(timestamp: number) {
+      if (!timestamp) {
+        return ''
       }
 
-      return str.substring(0, 50) + '...'
+      const date = new Date(timestamp)
+      return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
     },
   },
 })

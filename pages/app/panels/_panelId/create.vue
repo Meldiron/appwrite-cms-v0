@@ -1,29 +1,16 @@
 <template>
   <div class="p-6 bg-white rounded-md">
-    <form
-      v-on:submit.prevent="SET_ACTION('onCreateSave')"
-      class="flex flex-col max-w-xl space-y-6"
-    >
-      <div
-        :key="blockIndex"
-        v-for="(block, blockIndex) in panel.actions.create.blocks"
-      >
-        <component
-          :ref="'createBlock' + blockIndex"
-          v-bind:is="'Blocks' + block.type"
-          :config="block.config"
-          :appwrite="appwrite"
-        ></component>
-      </div>
-
-      <button type="submit" class="hidden">Hidden submit button</button>
-    </form>
+    <CoreForm
+      action="onCreateSave"
+      :blocks="panel.actions.create.blocks"
+      refPrefix="createBlock"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+
 import { AppwriteService } from '~/services/appwrite'
 
 export default Vue.extend({
@@ -34,53 +21,13 @@ export default Vue.extend({
     return {
       panelId: this.$route.params.panelId,
       panel: this.$store.state.config.config.panels[this.$route.params.panelId],
-      appwrite: AppwriteService,
     }
   },
 
   async created() {},
 
-  computed: {
-    ...mapGetters('headerActions', ['GET_OMITTER']),
-  },
-
-  watch: {
-    GET_OMITTER: {
-      handler(newAction) {
-        if (newAction === 'onCreateSave') {
-          this.onSubmit()
-        }
-      },
-    },
-  },
-
   methods: {
-    ...mapMutations('headerActions', ['SET_LOADING']),
-    ...mapActions('headerActions', ['SET_ACTION']),
-    async onSubmit() {
-      this.SET_LOADING(true)
-
-      let document = {}
-
-      let i = 0
-      for (const block of this.panel.actions.create.blocks) {
-        const component = this.$refs['createBlock' + i]
-        let appendMethod = undefined
-
-        try {
-          // @ts-ignore
-          appendMethod = component[0].$append
-        } catch (err) {
-          // I dont care. Incorrect component implementation
-        }
-
-        if (appendMethod) {
-          document = await appendMethod(document)
-        }
-
-        i++
-      }
-
+    async onSubmit(document: any) {
       const isSuccessful = await AppwriteService.createDocument(
         this.panelId,
         document
@@ -88,8 +35,6 @@ export default Vue.extend({
       if (isSuccessful) {
         this.$router.push(`/app/panels/${this.panelId}`)
       }
-
-      this.SET_LOADING(false)
     },
   },
 })
