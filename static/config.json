@@ -4,7 +4,7 @@
     "projectId": "appwriteBlog"
   },
   "theme": {
-    "projectName": "Daruj Kupón",
+    "projectName": "Matej's Blog",
     "projectIcon": "🎁"
   },
   "groups": {
@@ -26,33 +26,75 @@
     ]
   },
   "panels": {
-    "test": {
-      "description": "Test",
-      "icon": "🤖",
-      "groupId": null,
-      "name": "Test",
+    "blogNews": {
+      "description": "Weekly news, similiar to newsletter.",
+      "icon": "📰",
+      "groupId": "marketing",
+      "name": "News",
       "labels": {},
+      "TODO": "Fill actions",
+      "actions": {}
+    },
+
+    "blogArticles": {
+      "description": "Blog posts about programming.",
+      "icon": "📄",
+      "groupId": "marketing",
+      "name": "Articles",
+      "labels": {},
+      "TODO": "Fill actions",
+      "actions": {}
+    },
+
+    "blogAuthors": {
+      "searchAttributes": ["name", "$id"],
+      "labels": {
+        "only-verified": {
+          "name": "Only verified"
+        },
+        "requested-verification": {
+          "name": "Requested verification"
+        },
+        "more-than-10-articles": {
+          "name": "More than 10 articles"
+        }
+      },
+      "description": "Authors of articles. Not news!",
+      "icon": "👱‍♀️",
+      "groupId": "marketing",
+      "name": "Authors",
       "actions": {
+        "view": {
+          "TODO": "Fill blocks",
+          "blocks": []
+        },
         "list": {
           "blocks": [
             {
-              "width": "100px",
-              "name": "Public?",
-              "type": "ListBooleanValue",
-              "attribute": "boolVal",
-              "config": {}
-            },
-            {
-              "width": "200px",
-              "name": "Created Date",
-              "type": "ListUnixTimestampValue",
-              "attribute": "createdAt",
-              "config": {}
-            },
-            {
-              "name": "Created Date",
+              "name": "Appwrite ID",
+              "width": "250px",
               "type": "ListStringValue",
-              "attribute": "tags",
+              "attribute": "$id",
+              "config": {}
+            },
+
+            {
+              "name": "Photo",
+              "type": "ListImageValue",
+              "attribute": "photoFileId",
+              "width": "85px",
+              "config": {}
+            },
+            {
+              "name": "Name",
+              "type": "ListStringValue",
+              "attribute": "name",
+              "config": {}
+            },
+            {
+              "name": "Bio",
+              "type": "ListStringValue",
+              "attribute": "bio",
               "config": {}
             }
           ]
@@ -61,30 +103,8 @@
           "blocksReflectCreate": true
         },
         "create": {
-          "blocks": [
-            {
-              "type": "FormBooleanInput",
-              "attribute": "boolVal",
-              "name": "Is article published?",
-              "note": "Test of a note",
-              "config": {}
-            },
-            {
-              "type": "FormUnixTimestampInput",
-              "attribute": "createdAt",
-              "name": "Publish date",
-              "config": {}
-            },
-            {
-              "type": "FormTextInput",
-              "array": true,
-              "attribute": "tags",
-              "name": "Array of tags",
-              "config": {
-                "placeholder": "Your tag"
-              }
-            }
-          ]
+          "TODO": "Fill blocks",
+          "blocks": []
         }
       }
     }

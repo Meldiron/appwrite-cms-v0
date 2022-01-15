@@ -12,6 +12,7 @@
         <component
           :ref="refPrefix + blockIndex"
           v-bind:is="'Blocks' + block.type"
+          :document="document"
           :documentValue="document ? document[block.attribute] : undefined"
           :config="block.config"
           :appwrite="appwrite"
@@ -48,6 +49,7 @@
               :ref="refPrefix + blockIndex + ',' + arrayIndex"
               v-bind:is="'Blocks' + block.type"
               :config="block.config"
+              :document="document"
               :documentValue="arrayBlock.val"
               :appwrite="appwrite"
             ></component>
@@ -78,7 +80,15 @@
         <button
           @click="onAddArray(blockIndex)"
           type="button"
-          class="px-6 py-2 text-sm rounded-md  bg-slate-200 text-slate-900 hover:bg-slate-300"
+          class="
+            px-6
+            py-2
+            text-sm
+            rounded-md
+            bg-slate-200
+            text-slate-900
+            hover:bg-slate-300
+          "
         >
           Add
         </button>

@@ -12,7 +12,7 @@ export default Vue.extend({
   props: ['config', 'document', 'appwrite', 'documentValue'],
   methods: {
     parseDate(dateTimestamp: number) {
-      const date = new Date(dateTimestamp * 1000)
+      const date = new Date(dateTimestamp)
 
       return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
     },
