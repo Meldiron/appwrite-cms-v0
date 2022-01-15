@@ -1,11 +1,11 @@
 {
   "appwrite": {
-    "endpoint": "https://demo.appwrite.io/v1",
-    "projectId": "appwriteBlog"
+    "endpoint": "https://appwrite.raneurope.eu/v1",
+    "projectId": "raneurope"
   },
   "theme": {
-    "projectName": "Matej's Blog",
-    "projectIcon": "🎁"
+    "projectName": "RANEurope s.r.o.",
+    "projectIcon": "🗎"
   },
   "groups": {
     "marketing": {
@@ -15,12 +15,12 @@
     }
   },
   "dashboard": {
-    "motd": "Welcome to the CMS 👋",
+    "motd": "Vitaj v administráci firmy RANEurope s.r.o. 👋",
     "blocks": [
       {
         "type": "PresentationDivider",
         "config": {
-          "text": "Work in progress ...",
+          "text": "Pripravujeme ....",
           "icon": "🎆"
         }
       }
