@@ -18,9 +18,10 @@
     "motd": "Welcome to the CMS 👋",
     "blocks": [
       {
-        "type": "DashboardTitle",
+        "type": "PresentationDivider",
         "config": {
-          "value": "Dashboard components are being prepared ..."
+          "text": "Work in progress ...",
+          "icon": "🎆"
         }
       }
     ]
@@ -65,8 +66,15 @@
       "name": "Authors",
       "actions": {
         "view": {
-          "TODO": "Fill blocks",
-          "blocks": []
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "config": {
+                "text": "Work in progress ...",
+                "icon": "🎆"
+              }
+            }
+          ]
         },
         "list": {
           "blocks": [
@@ -103,8 +111,15 @@
           "blocksReflectCreate": true
         },
         "create": {
-          "TODO": "Fill blocks",
-          "blocks": []
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "config": {
+                "text": "Work in progress ...",
+                "icon": "🎆"
+              }
+            }
+          ]
         }
       }
     }

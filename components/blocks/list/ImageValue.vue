@@ -17,7 +17,7 @@
       >
         <div class="flex flex-col items-center space-y-2">
           <img
-            class="max-h-screen max-w-screen"
+            class="max-h-[80vh] max-w-[80vw]"
             :src="appwrite.previewFile(documentValue)"
             alt=""
           />
