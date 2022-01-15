@@ -84,6 +84,7 @@ export type ConfigType = {
                 },
                 list: {
                     blocks: {
+                        // TODO: List array
                         width: number; // In pixels
                         name: string;
                         type: string;
@@ -240,7 +241,7 @@ export const actions: ActionTree<RootState, RootState> = {
             p.actions.list.blocks = p.actions.list.blocks.map((b) => {
                 b.config = b.config || {};
                 b.name = b.name || "Unnamed";
-                b.array = b.array == undefined || b.array === null ? false : b.array;
+                // TODO: List array
                 return b;
             });
 
