@@ -107,7 +107,7 @@
           class="flex items-center justify-end space-x-4"
         >
           <div
-            v-if="panel.searchAttributes && panel.searchAttributes.length > 0"
+            v-if="panel.searchAttribute"
             class="flex items-center justify-center group"
           >
             <div class="p-3 rounded-l-md bg-slate-100 text-slate-700">
@@ -128,6 +128,8 @@
             </div>
             <div class="p-1 pl-0 rounded-r-md bg-slate-100 text-slate-700">
               <input
+                @change="onChangeSearch"
+                v-model="searchText"
                 placeholder="I am looking for ..."
                 class="
                   bg-white
@@ -357,6 +359,7 @@
           class="flex items-center justify-end space-x-4"
         >
           <nuxt-link
+            v-if="!panel.singleton"
             :to="'/app/panels/' + panelId"
             class="flex items-center justify-center group"
           >
@@ -461,11 +464,12 @@ export default Vue.extend({
   data() {
     return {
       version: process.env.APPVERSION,
-      panel: null,
+      panel: null as any,
       isLoggingOut: false,
       pageType: 'list',
       documentId: null as null | string,
       panelId: null as null | string,
+      searchText: '',
     }
   },
   watch: {
@@ -474,6 +478,17 @@ export default Vue.extend({
     },
   },
   methods: {
+    async onChangeSearch() {
+      if (!this.panel) {
+        return
+      }
+
+      const searchTerm = this.searchText
+      this.$router.push({
+        path: this.$route.path,
+        query: { ...this.$route.query, search: searchTerm },
+      })
+    },
     ...mapActions('headerActions', ['SET_ACTION']),
     getCurrentPageName(pageType: string) {
       if (pageType === 'homepage') {
@@ -498,6 +513,7 @@ export default Vue.extend({
       return obj.blocks && obj.blocks.length > 0
     },
     updatePanel() {
+      this.searchText = this.$route.query.search || ''
       this.documentId = this.$route.params.documentId || null
       this.panelId = this.$route.params.panelId
       this.panel =

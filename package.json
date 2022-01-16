@@ -17,11 +17,13 @@
     "@tiptap/starter-kit": "^2.0.0-beta.171",
     "@tiptap/vue-2": "^2.0.0-beta.75",
     "@types/marked": "^4.0.1",
+    "@types/vue2-editor": "^2.6.1",
     "axios": "^0.24.0",
     "core-js": "^3.15.1",
     "marked": "^4.0.8",
     "node-appwrite": "^4.0.2",
     "nuxt": "^2.15.7",
+    "vue2-editor": "^2.10.3",
     "vuex-module-decorators": "^2.0.0"
   },
   "devDependencies": {

@@ -24,20 +24,14 @@ Thanks for your attention open source community! See you later in GitHub issues 
 
 ## TODO
 
+- Sort by attribute functionality
+- Multiselect delete in list
 - Array in list, somehow
 - Relationship components
 - Dashboard components (graphs, ...)
-- Search functionality
-- Sort by attribute functionality
-- Multiselect delete in list
-- Image in list, gray background close preview
-- Labels functionality
 - Dark theme
 - Responsibity
 - Write GitBook docs
-- Not everything shows if it's loading
-- Use isLoading on "save" button
-- Permission management (team owners&members)
 - Auth using email&password (custom cloud function)
 - Offset pagination option
 - Research cursor pagination (probably never before direction)
