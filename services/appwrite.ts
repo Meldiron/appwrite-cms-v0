@@ -99,7 +99,7 @@ export const AppwriteService = {
     },
 
     previewFile(fileId: string): string {
-        return 'https://demo.appwrite.io/v1/storage/files/' + fileId + '/view?project=appwriteBlog&width=500&output=webp&gravity=center';
+        return config.appwrite.endpoint + '/storage/files/' + fileId + '/view?project=appwriteBlog&width=500&output=webp&gravity=center';
     },
 
     async uploadFile(fileId: string, file: any, read: string[], write: string[]) {
