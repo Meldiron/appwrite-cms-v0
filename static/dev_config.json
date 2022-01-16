@@ -29,7 +29,7 @@
   "panels": {
     "settings": {
       "description": "Website basic settings.",
-      "icon": "🛠",
+      "icon": "🧰",
       "groupId": null,
       "name": "Settings",
       "singleton": "61e3e740962363a6e7f5",
