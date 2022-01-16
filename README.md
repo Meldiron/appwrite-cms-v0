@@ -22,6 +22,10 @@ The correct spelling is `Appwrite`, not `AppWrite`. Just like that, this is prod
 
 Thanks for your attention open source community! See you later in GitHub issues section 👋
 
+## Documentation
+
+You can find bunch of resources on our official [GitBook](https://meldiron-appwrite.gitbook.io/appwrite-cms/) documentation.
+
 ## TODO
 
 - Sort by attribute functionality
