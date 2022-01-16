@@ -9,7 +9,7 @@
   },
   "groups": {},
   "dashboard": {
-    "motd": "Vitaj 👋",
+    "motd": "„Nehovor, že to nejde. Radšej povedz, že to zatiaľ neovládaš.“ – Tomáš Baťa",
     "blocks": [
       {
         "type": "PresentationDivider",
@@ -204,6 +204,54 @@
               "name": "Profilová fotka",
               "note": "Fotka autora",
               "attribute": "profilePicture"
+            }
+          ]
+        }
+      }
+    },
+    "faq": {
+      "description": "FAQ - Pridávanie často kladených otázok",
+      "icon": "📔",
+      "name": "FAQ",
+      "actions": {
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "list": {
+          "blocks": [
+            {
+              "attribute": "question",
+              "name": "Otázka",
+              "width": "300px",
+              "type": "ListStringValue"
+            },
+            {
+              "attribute": "isPublish",
+              "name": "Publikované?",
+              "type": "ListBooleanValue",
+              "width": "80px"
+            }
+          ]
+        },
+        "create": {
+          "blocks": [
+            {
+              "attribute": "question",
+              "type": "FormTextInput",
+              "name": "Otázka",
+              "config": {
+                "placeholder": "Sem napíš otázku"
+              }
+            },
+            {
+              "attribute": "answer",
+              "type": "FormRichTextInput",
+              "name": "Odpoveď na otázku"
+            },
+            {
+              "attribute": "isPublish",
+              "type": "FormBooleanInput",
+              "name": "Verejne/Neverejne"
             }
           ]
         }
