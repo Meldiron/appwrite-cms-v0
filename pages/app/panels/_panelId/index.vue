@@ -258,14 +258,23 @@ export default Vue.extend({
       const orderAttributes: string[] = []
       const orderTypes: string[] = []
 
-      for (const orderKey in this.label.sorts) {
-        orderAttributes.push(orderKey)
-        orderTypes.push(this.label.sorts[orderKey])
+      if (this.label) {
+        for (const orderKey in this.label.sorts) {
+          orderAttributes.push(orderKey)
+          orderTypes.push(this.label.sorts[orderKey])
+        }
+      }
+
+      const queries = this.label ? [...this.label.queries] : []
+
+      if (this.searchText) {
+        const queryConfig = this.panel.searchAttribute
+        queries.push(`${queryConfig}.search('${this.searchText}')`)
       }
 
       const appwriteResponse = await AppwriteService._db().listDocuments(
         this.panelId,
-        this.label.queries,
+        queries,
         this.currentlySelectedLimit + 1,
         undefined,
         this.cursor,
@@ -321,6 +330,15 @@ export default Vue.extend({
       this.panelId = this.$route.params.panelId
       this.panel = this.$store.state.config.config.panels[this.panelId]
 
+      if (this.panel.singleton) {
+        this.$router.push(
+          `/app/panels/${this.panelId}/${this.panel.singleton}/view`
+        )
+
+        return
+      }
+
+      this.searchText = (this.$route.query.search as string) || null
       if (!this.currentlySelectedLimit) {
         this.currentlySelectedLimit = this.panel.defaultLimit
       }
@@ -330,13 +348,19 @@ export default Vue.extend({
         this.label = this.panel.labels[this.labelId]
       } else {
         const firstLabelId = Object.keys(this.panel.labels)[0]
-        this.$router.push(`?labelId=${firstLabelId}`)
+        this.$router.push({
+          path: this.$route.path,
+          query: { ...this.$route.query, labelId: firstLabelId },
+        })
       }
 
       await this.getCurrentPage()
     },
     onGoToLabel(labelId: string) {
-      this.$router.push(`?labelId=${labelId}`)
+      this.$router.push({
+        path: this.$route.path,
+        query: { ...this.$route.query, labelId: labelId },
+      })
     },
   },
 
@@ -347,6 +371,7 @@ export default Vue.extend({
       label: null as any | null,
       labelId: null as null | string,
       panelId: null as null | string,
+      searchText: null as null | string,
       documents: [] as any[],
       hasPrevious: false,
       hasNext: false,

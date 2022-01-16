@@ -1,11 +1,17 @@
 <template>
   <div class="flex flex-col space-y-1">
-    <input
+    <select
       class="w-full p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
       v-model="value"
-      type="text"
-      :placeholder="config.placeholder"
-    />
+    >
+      <option
+        :key="optionIndex"
+        v-for="(option, optionIndex) of config.options"
+        :value="option.value"
+      >
+        {{ option.name }}
+      </option>
+    </select>
   </div>
 </template>
 

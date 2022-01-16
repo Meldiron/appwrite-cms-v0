@@ -1,0 +1,377 @@
+{
+  "appwrite": {
+    "endpoint": "https://demo.appwrite.io/v1",
+    "projectId": "appwriteBlog"
+  },
+  "theme": {
+    "projectName": "Matej's Blog",
+    "projectIcon": "🎁"
+  },
+  "groups": {
+    "marketing": {
+      "name": "Marketing",
+      "icon": "📖",
+      "isOpenedByDefault": true
+    }
+  },
+  "dashboard": {
+    "motd": "Welcome to the CMS 👋",
+    "blocks": [
+      {
+        "type": "PresentationDivider",
+        "config": {
+          "text": "Work in progress ...",
+          "icon": "🎆"
+        }
+      }
+    ]
+  },
+  "panels": {
+    "settings": {
+      "description": "Website basic settings.",
+      "icon": "🛠",
+      "groupId": null,
+      "name": "Settings",
+      "singleton": "61e3e740962363a6e7f5",
+      "actions": {
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "view": {
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "attribute": null,
+              "config": {
+                "icon": "🛠",
+                "text": "Settings"
+              }
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "Appwrite ID",
+              "attribute": "$id"
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "Contact email",
+              "attribute": "contactEmail"
+            }
+          ]
+        },
+
+        "create": {
+          "blocks": [
+            {
+              "type": "FormTextInput",
+              "name": "Contact email",
+              "attribute": "contactEmail",
+              "config": {
+                "placeholder": "Ideally at @darujkupon.cz domain ..."
+              }
+            }
+          ]
+        }
+      }
+    },
+    "blogNews": {
+      "description": "Weekly news, similiar to newsletter.",
+      "icon": "📰",
+      "groupId": "marketing",
+      "name": "News",
+      "labels": {
+        "only-published": {
+          "sorts": [],
+          "queries": ["isPublished.equal(true)"],
+          "name": "Only published"
+        },
+        "only-drafts": {
+          "sorts": [],
+          "queries": ["isPublished.equal(false)"],
+          "name": "Only drafts"
+        }
+      },
+      "actions": {
+        "view": {
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "attribute": null,
+              "config": {
+                "icon": "👱‍♀️",
+                "text": "News details"
+              }
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "Title",
+              "attribute": "title"
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "Text",
+              "attribute": "content"
+            },
+            {
+              "type": "DetailBooleanValue",
+              "name": "Is published?",
+              "attribute": "isPublished"
+            },
+            {
+              "type": "DetailUnixTimestampValue",
+              "name": "Publish date",
+              "attribute": "publishedAt"
+            },
+            {
+              "type": "DetailRelationValue",
+              "name": "Author",
+              "attribute": "authorId",
+              "config": {
+                "collection": "blogAuthors",
+                "attribute": "name"
+              }
+            }
+          ]
+        },
+        "list": {
+          "blocks": [
+            {
+              "name": "Appwrite ID",
+              "width": "250px",
+              "type": "ListStringValue",
+              "attribute": "$id",
+              "config": {}
+            },
+            {
+              "name": "Published?",
+              "type": "ListBooleanValue",
+              "attribute": "isPublished",
+              "width": "130px",
+              "config": {}
+            },
+            {
+              "name": "Title",
+              "type": "ListStringValue",
+              "attribute": "title",
+              "config": {}
+            },
+            {
+              "width": "350px",
+              "name": "Author",
+              "type": "ListRelationValue",
+              "attribute": "authorId",
+              "config": {
+                "collection": "blogAuthors",
+                "attribute": "name"
+              }
+            },
+            {
+              "width": "140px",
+              "name": "Publish date",
+              "type": "ListUnixTimestampValue",
+              "attribute": "publishedAt",
+              "config": {}
+            }
+          ]
+        },
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "create": {
+          "blocks": [
+            {
+              "type": "FormTextInput",
+              "name": "News title",
+              "attribute": "title",
+              "config": {
+                "placeholder": "We just released ..."
+              }
+            },
+            {
+              "type": "FormTextareaInput",
+              "attribute": "content",
+              "name": "News text",
+              "config": {
+                "placeholder": "Since we started ..."
+              }
+            },
+            {
+              "type": "FormSelectRelationInput",
+              "attribute": "authorId",
+              "name": "Author",
+              "config": {
+                "collection": "blogAuthors",
+                "attribute": "name"
+              }
+            },
+            {
+              "type": "FormUnixTimestampInput",
+              "attribute": "publishedAt",
+              "name": "Release date",
+              "config": {}
+            },
+            {
+              "type": "FormBooleanInput",
+              "attribute": "isPublished",
+              "name": "Is this published?",
+              "config": {}
+            }
+          ]
+        }
+      }
+    },
+
+    "blogArticles": {
+      "description": "Blog posts about programming.",
+      "icon": "📄",
+      "groupId": "marketing",
+      "name": "Articles",
+      "labels": {},
+      "actions": {
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "create": {
+          "blocks": [
+            {
+              "type": "FormTextInput",
+              "name": "News title",
+              "attribute": "title",
+              "config": {
+                "placeholder": "We just released ..."
+              }
+            },
+            {
+              "type": "FormTextareaInput",
+              "attribute": "content",
+              "name": "News text",
+              "config": {
+                "placeholder": "Since we started ..."
+              }
+            },
+            {
+              "type": "FormSelectRelationInput",
+              "attribute": "authorId",
+              "name": "Author",
+              "config": {
+                "collection": "blogAuthors",
+                "attribute": "name"
+              }
+            },
+            {
+              "type": "FormUnixTimestampInput",
+              "attribute": "publishedAt",
+              "name": "Release date",
+              "config": {}
+            },
+            {
+              "type": "FormBooleanInput",
+              "attribute": "isPublished",
+              "name": "Is this published?",
+              "config": {}
+            }
+          ]
+        }
+      }
+    },
+
+    "blogAuthors": {
+      "searchAttribute": "name",
+      "description": "Authors of articles. Not news!",
+      "icon": "👱‍♀️",
+      "groupId": "marketing",
+      "name": "Authors",
+      "actions": {
+        "view": {
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "attribute": null,
+              "config": {
+                "icon": "👱‍♀️",
+                "text": "Author details"
+              }
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "Full name",
+              "attribute": "name"
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "About author",
+              "attribute": "bio"
+            },
+            {
+              "type": "DetailImageValue",
+              "name": "Author picture",
+              "attribute": "photoFileId"
+            }
+          ]
+        },
+        "list": {
+          "blocks": [
+            {
+              "name": "Appwrite ID",
+              "width": "250px",
+              "type": "ListStringValue",
+              "attribute": "$id",
+              "config": {}
+            },
+
+            {
+              "name": "Photo",
+              "type": "ListImageValue",
+              "attribute": "photoFileId",
+              "width": "85px",
+              "config": {}
+            },
+            {
+              "name": "Name",
+              "type": "ListStringValue",
+              "attribute": "name",
+              "config": {}
+            },
+            {
+              "name": "Bio",
+              "type": "ListStringValue",
+              "attribute": "bio",
+              "config": {}
+            }
+          ]
+        },
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "create": {
+          "blocks": [
+            {
+              "type": "FormTextInput",
+              "name": "Full name",
+              "attribute": "name",
+              "config": {
+                "placeholder": "Author name"
+              }
+            },
+            {
+              "type": "FormTextareaInput",
+              "name": "About author",
+              "note": "Short 1-2 sentence bio.",
+              "attribute": "bio",
+              "config": {
+                "placeholder": "I am ..."
+              }
+            },
+            {
+              "type": "FormImageInput",
+              "name": "Profile photo",
+              "note": "Square author picture",
+              "attribute": "photoFileId",
+              "config": {}
+            }
+          ]
+        }
+      }
+    }
+  }
+}

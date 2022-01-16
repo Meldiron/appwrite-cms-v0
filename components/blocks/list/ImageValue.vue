@@ -13,18 +13,31 @@
 
     <div v-if="isFullscreen" class="fixed inset-0">
       <div
-        class="flex items-center justify-center w-full h-full bg-black bg-opacity-50 "
+        class="absolute z-[9] w-full h-full bg-black bg-opacity-50"
+        @click="onCloseFullscreen"
+      ></div>
+      <div
+        class="
+          relative
+          z-[10]
+          pointer-events-none
+          w-full
+          h-full
+          flex
+          items-center
+          justify-center
+        "
       >
         <div class="flex flex-col items-center space-y-2">
           <img
-            class="max-h-[80vh] max-w-[80vw]"
+            class="max-h-[80vh] max-w-[80vw] pointer-events-auto"
             :src="appwrite.previewFile(documentValue)"
             alt=""
           />
 
           <button
             @click="onCloseFullscreen"
-            class="text-lg font-light text-white hover:underline"
+            class="text-lg font-light text-white pointer-events-auto  hover:underline"
           >
             Close
           </button>

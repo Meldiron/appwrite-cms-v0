@@ -10,6 +10,8 @@ export default {
 
   env: {
     APPVERSION: '0.1.0',
+    CONFIG_PATH:
+      process.env.IS_DEVELOPMENT === 'true' ? 'dev_config.json' : 'config.json',
   },
 
   router: {
@@ -85,7 +87,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', 'vue2-editor/nuxt'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

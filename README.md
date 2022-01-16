@@ -22,19 +22,20 @@ The correct spelling is `Appwrite`, not `AppWrite`. Just like that, this is prod
 
 Thanks for your attention open source community! See you later in GitHub issues section 👋
 
-## Future plans
+## TODO
 
-- Offset pagination
-- Cursor pagination improvements (dont think we should use previous direction EVER)
-- Docs how to create new components (all 3 types)
-- Searching
-- TODOS in code
-- Pouzi isLoading zo store aby si dal loading ikonku na action tlacidlo (save)
-- isLoading po stranke asi vsade chyba
+- Sort by attribute functionality
+- Multiselect delete in list
+- Array in list, somehow
+- Relationship components
+- Dashboard components (graphs, ...)
 - Dark theme
-- Mobile responsivity
-- Permission management (team owners&members)
-- Modular auth&storage&data library to allow other backends
+- Responsibity
+- Write GitBook docs
+- Auth using email&password (custom cloud function)
+- Offset pagination option
+- Research cursor pagination (probably never before direction)
+- TODOS in code
 
 ## Contributing
 

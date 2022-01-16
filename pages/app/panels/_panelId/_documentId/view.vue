@@ -1,6 +1,6 @@
 <template>
   <div class="p-6 bg-white rounded-md">
-    <div v-if="document" class="flex flex-col max-w-xl space-y-6">
+    <div v-if="document" class="flex flex-col max-w-2xl space-y-6">
       <div
         :key="blockIndex"
         v-for="(block, blockIndex) in panel.actions.view.blocks"

@@ -1,7 +1,7 @@
 <template>
   <form
     v-on:submit.prevent="SET_ACTION(this.action)"
-    class="flex flex-col max-w-xl space-y-6"
+    class="flex flex-col max-w-2xl space-y-6"
   >
     <div :key="blockIndex" v-for="(block, blockIndex) in blocks">
       <div v-if="block.array === false">

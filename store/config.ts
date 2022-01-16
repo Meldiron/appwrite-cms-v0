@@ -38,14 +38,15 @@ export type ConfigType = {
     },
     panels: {
         [panelId: string]: {
+            singleton: string | null,
             name: string,
             id: string, // Set automatically
             groupId: string | null, // Optional, null means no group
             icon: string | null, // Optional
             description: string | null, // Optional
             menuSort: number, // Optional
-            searchAttributes: string[], // Optional, empty array means search disabled
-            // TODO: Use searchAttributes
+            searchAttribute: string, // Optional, empty array means search disabled
+            // TODO: SearchAttribute(s) might be array in future, as soon as Appwrite supports it
             defaultLimit: number, // Optional
             hideAllRecordsLabel: boolean, // Optional
             canDeleteDocuments: boolean, // Optional
@@ -167,7 +168,7 @@ export const actions: ActionTree<RootState, RootState> = {
     async load({ commit }) {
 
         // Load config JSON
-        const unprocessedConfig = await this.$axios.$get('/config.json');
+        const unprocessedConfig = await this.$axios.$get('/' + process.env.CONFIG_PATH);
         const config: ConfigType = {
             ...unprocessedConfig
         }
@@ -205,6 +206,7 @@ export const actions: ActionTree<RootState, RootState> = {
             p.defaultLimit = p.defaultLimit || config.settings.limitOptions[0];
             p.canDeleteDocuments = p.canDeleteDocuments === undefined || p.canDeleteDocuments === null ? true : p.canDeleteDocuments;
             p.hideAllRecordsLabel = p.hideAllRecordsLabel === undefined || p.hideAllRecordsLabel === null ? false : p.hideAllRecordsLabel;
+            p.singleton = p.singleton || null;
             p.labels = p.labels || {};
 
             p.actions = p.actions || {};
