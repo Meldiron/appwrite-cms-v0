@@ -5,119 +5,66 @@
   },
   "theme": {
     "projectName": "RANEurope s.r.o.",
-    "projectIcon": "🗎"
+    "projectIcon": "💰"
   },
-  "groups": {
-    "marketing": {
-      "name": "Marketing",
-      "icon": "📖",
-      "isOpenedByDefault": true
-    }
-  },
+  "groups": {},
   "dashboard": {
-    "motd": "Vitaj v administráci firmy RANEurope s.r.o. 👋",
+    "motd": "Vitaj 👋",
     "blocks": [
       {
         "type": "PresentationDivider",
         "config": {
-          "text": "Pripravujeme ....",
+          "text": "Pripravujeme ...",
           "icon": "🎆"
         }
       }
     ]
   },
   "panels": {
-    "blogNews": {
-      "description": "Weekly news, similiar to newsletter.",
-      "icon": "📰",
-      "groupId": "marketing",
-      "name": "News",
-      "labels": {},
-      "TODO": "Fill actions",
-      "actions": {}
-    },
-
-    "blogArticles": {
-      "description": "Blog posts about programming.",
-      "icon": "📄",
-      "groupId": "marketing",
-      "name": "Articles",
-      "labels": {},
-      "TODO": "Fill actions",
-      "actions": {}
-    },
-
-    "blogAuthors": {
-      "searchAttributes": ["name", "$id"],
-      "labels": {
-        "only-verified": {
-          "name": "Only verified"
-        },
-        "requested-verification": {
-          "name": "Requested verification"
-        },
-        "more-than-10-articles": {
-          "name": "More than 10 articles"
-        }
-      },
-      "description": "Authors of articles. Not news!",
-      "icon": "👱‍♀️",
-      "groupId": "marketing",
-      "name": "Authors",
+    "blog": {
+      "description": "Vytvorenie nového článku na blog",
+      "icon": "📓",
+      "name": "Blog",
       "actions": {
-        "view": {
-          "blocks": [
-            {
-              "type": "PresentationDivider",
-              "config": {
-                "text": "Work in progress ...",
-                "icon": "🎆"
-              }
-            }
-          ]
-        },
-        "list": {
-          "blocks": [
-            {
-              "name": "Appwrite ID",
-              "width": "250px",
-              "type": "ListStringValue",
-              "attribute": "$id",
-              "config": {}
-            },
-
-            {
-              "name": "Photo",
-              "type": "ListImageValue",
-              "attribute": "photoFileId",
-              "width": "85px",
-              "config": {}
-            },
-            {
-              "name": "Name",
-              "type": "ListStringValue",
-              "attribute": "name",
-              "config": {}
-            },
-            {
-              "name": "Bio",
-              "type": "ListStringValue",
-              "attribute": "bio",
-              "config": {}
-            }
-          ]
-        },
         "edit": {
           "blocksReflectCreate": true
         },
         "create": {
           "blocks": [
             {
-              "type": "PresentationDivider",
+              "attribute": "title",
+              "type": "FormTextInput",
+              "name": "Nádpis článku",
               "config": {
-                "text": "Work in progress ...",
-                "icon": "🎆"
+                "placeholder": "Sem napíš nádpis článku"
               }
+            },
+            {
+              "attribute": "imageId",
+              "type": "FormImageInput",
+              "name": "Titulný obrázok"
+            },
+            {
+              "attribute": "tags",
+              "array": true,
+              "type": "FormTextInput",
+              "name": "Tagy",
+              "config": {
+                "placeholder": "Sem napíš tagy ktoré chceš použiť"
+              }
+            },
+            {
+              "attribute": "isPublish",
+              "type": "FormBooleanInput",
+              "name": "Verejne/Neverejne"
+            },
+            {
+              "attribute": "content",
+              "type": "FormRichTextInput",
+              "name": "Obsah článku"
+            },
+            {
+              "attribute": "dateCreat"
             }
           ]
         }
