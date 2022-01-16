@@ -92,7 +92,7 @@
             {
               "attribute": "shortCont",
               "type": "FormRichTextInput",
-              "name": "Krátky opis obsahu článku"
+              "name": "Krátky opis obsahu článku",
               "config": {
                 "placeholder": "Sem napíš krátky opis obsahu !Maximalne 87 znakov!"
               }
