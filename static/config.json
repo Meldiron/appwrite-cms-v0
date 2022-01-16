@@ -93,6 +93,9 @@
               "attribute": "shortCont",
               "type": "FormRichTextInput",
               "name": "Krátky opis obsahu článku"
+              "config": {
+                "placeholder": "Sem napíš krátky opis obsahu článku !!POZOR!! maximalne 87 znakov!"
+              }
             },
             {
               "attribute": "content",
