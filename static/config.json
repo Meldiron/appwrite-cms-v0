@@ -25,9 +25,54 @@
       "description": "Vytvorenie nového článku na blog",
       "icon": "📓",
       "name": "Blog",
+      "searchAttribute": "title",
+      "labels": {
+        "only-published": {
+          "sorts": [],
+          "queries": ["isPublish.equal(true)"],
+          "name": "Only published"
+        },
+        "only-drafts": {
+          "sorts": [],
+          "queries": ["isPublish.equal(false)"],
+          "name": "Only drafts"
+        }
+      },
       "actions": {
         "edit": {
           "blocksReflectCreate": true
+        },
+        "list": {
+          "blocks": [
+            {
+              "attribute": "title",
+              "name": "Nádpis",
+              "width": "300px",
+              "type": "ListStringValue"
+            },
+            {
+              "attribute": "isPublish",
+              "name": "Publikované?",
+              "type": "ListBooleanValue",
+              "width": "80px"
+            },
+            {
+              "attribute": "authorId",
+              "name": "Autor",
+              "type": "ListRelationValue",
+              "width": "200px",
+              "config": {
+                "collection": "authors",
+                "attribute": "name"
+              }
+            },
+            {
+              "attribute": "dateCreat",
+              "name": "Dátum zverejnenia",
+              "type": "ListUnixTimestampValue",
+              "width": "150px"
+            }
+          ]
         },
         "create": {
           "blocks": [
@@ -45,6 +90,11 @@
               "name": "Titulný obrázok"
             },
             {
+              "attribute": "content",
+              "type": "FormRichTextInput",
+              "name": "Obsah článku"
+            },
+            {
               "attribute": "tags",
               "array": true,
               "type": "FormTextInput",
@@ -59,12 +109,101 @@
               "name": "Verejne/Neverejne"
             },
             {
-              "attribute": "content",
-              "type": "FormRichTextInput",
-              "name": "Obsah článku"
+              "attribute": "dateCreat",
+              "type": "FormUnixTimestampInput",
+              "name": "Dátum zverejnenia"
             },
             {
-              "attribute": "dateCreat"
+              "attribute": "authorId",
+              "type": "FormSelectRelationInput",
+              "name": "Výber svoje meno ako autor",
+              "config": {
+                "collection": "authors",
+                "attribute": "name"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "authors": {
+      "description": "Autori článkov",
+      "icon": "👫",
+      "name": "Autori",
+      "actions": {
+        "view": {
+          "blocks": [
+            {
+              "type": "PresentationDivider",
+              "attribute": null,
+              "config": {
+                "text": "Podrobnosti o autorovi"
+              }
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "Celé Meno",
+              "attribute": "name"
+            },
+            {
+              "type": "DetailStringValue",
+              "name": "O Autorovi",
+              "attribute": "aboutAuthor"
+            },
+            {
+              "type": "DetailImageValue",
+              "name": "Obrázok Autora",
+              "attribute": "profilePicture"
+            }
+          ]
+        },
+        "list": {
+          "blocks": [
+            {
+              "name": "Fotka",
+              "type": "ListImageValue",
+              "attribute": "profilePicture",
+              "width": "85px"
+            },
+            {
+              "name": "Meno",
+              "type": "ListStringValue",
+              "attribute": "name"
+            },
+            {
+              "name": "O Autorovi",
+              "type": "ListStringValue",
+              "attribute": "aboutAuthor"
+            }
+          ]
+        },
+        "edit": {
+          "blocksReflectCreate": true
+        },
+        "create": {
+          "blocks": [
+            {
+              "type": "FormTextInput",
+              "name": "Celé meno",
+              "attribute": "name",
+              "config": {
+                "placeholder": "Celé meno autora"
+              }
+            },
+            {
+              "type": "FormTextareaInput",
+              "name": "O autorovi",
+              "note": "Krátky opis autora 1-2 vety.",
+              "attribute": "aboutAuthor",
+              "config": {
+                "placeholder": "Ja som ..."
+              }
+            },
+            {
+              "type": "FormImageInput",
+              "name": "Profilová fotka",
+              "note": "Fotka autora",
+              "attribute": "profilePicture"
             }
           ]
         }
