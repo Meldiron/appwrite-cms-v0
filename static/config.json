@@ -87,7 +87,8 @@
             {
               "attribute": "imageId",
               "type": "FormImageInput",
-              "name": "Titulný obrázok"
+              "name": "Titulný obrázok",
+              "note": "Odporúčané rozlišenie obrázka je 930 na 400 pixelov"
             },
             {
               "attribute": "shortCont",
