@@ -90,6 +90,11 @@
               "name": "Titulný obrázok"
             },
             {
+              "attribute": "shortCont",
+              "type": "FormRichTextInput",
+              "name": "Krátky opis obsahu článku"
+            },
+            {
               "attribute": "content",
               "type": "FormRichTextInput",
               "name": "Obsah článku"
