@@ -276,6 +276,19 @@
     },
 
     "blogAuthors": {
+      "labels": {
+        "only-published": {
+          "sorts": [],
+          "queries": [],
+          "name": "Only verified"
+        },
+        "only-drafts": {
+          "sorts": [],
+          "queries": [],
+          "name": "Only interns"
+        }
+      },
+
       "searchAttribute": "name",
       "description": "Authors of articles. Not news!",
       "icon": "👱‍♀️",
