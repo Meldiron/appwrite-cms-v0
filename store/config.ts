@@ -168,7 +168,7 @@ export const actions: ActionTree<RootState, RootState> = {
     async load({ commit }) {
 
         // Load config JSON
-        const unprocessedConfig = await this.$axios.$get('/config.json');
+        const unprocessedConfig = await this.$axios.$get('/' + process.env.CONFIG_PATH);
         const config: ConfigType = {
             ...unprocessedConfig
         }

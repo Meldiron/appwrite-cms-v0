@@ -10,6 +10,8 @@ export default {
 
   env: {
     APPVERSION: '0.1.0',
+    CONFIG_PATH:
+      process.env.IS_DEVELOPMENT === 'true' ? 'dev_config.json' : 'config.json',
   },
 
   router: {
