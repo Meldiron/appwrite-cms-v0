@@ -80,15 +80,7 @@
         <button
           @click="onAddArray(blockIndex)"
           type="button"
-          class="
-            px-6
-            py-2
-            text-sm
-            rounded-md
-            bg-slate-200
-            text-slate-900
-            hover:bg-slate-300
-          "
+          class="px-6 py-2 text-sm rounded-md  bg-slate-200 text-slate-900 hover:bg-slate-300"
         >
           Add
         </button>
@@ -111,6 +103,8 @@ import Vue from 'vue'
 import { AppwriteService } from '~/services/appwrite'
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 
+let incrementingIndex = 0
+
 export default Vue.extend({
   props: ['action', 'blocks', 'refPrefix', 'document'],
   data() {
@@ -120,13 +114,19 @@ export default Vue.extend({
       const block = this.blocks[i]
       if (block.array) {
         if (!this.document) {
-          arrayBlocks['a' + i] = [{ key: Date.now(), val: undefined }]
+          arrayBlocks['a' + i] = [
+            { key: Date.now() + '_' + incrementingIndex, val: undefined },
+          ]
+          incrementingIndex++
         } else {
           arrayBlocks['a' + i] = this.document[block.attribute].map(
             (val: any) => {
+              const k = Date.now() + '_' + incrementingIndex
+              incrementingIndex++
+
               return {
                 val,
-                key: Date.now(),
+                key: k,
               }
             }
           )
@@ -214,9 +214,11 @@ export default Vue.extend({
     },
     onAddArray(blockIndex: number) {
       this.arrayBlocks['a' + blockIndex].push({
-        key: Date.now(),
+        key: Date.now() + '_' + incrementingIndex,
         val: undefined,
       })
+
+      incrementingIndex++
     },
     onRemoveArray(blockIndex: number, itemIndex: number) {
       this.arrayBlocks['a' + blockIndex] = this.arrayBlocks[
