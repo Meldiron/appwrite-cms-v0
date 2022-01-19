@@ -8,7 +8,12 @@
 * [💾 Installation](getting-started/installation.md)
 * [🛠 Configuration](getting-started/configuration.md)
 * [🌈 Customization](getting-started/customization.md)
-* [🚀 Deployment](getting-started/deployment.md)
+* [🚀 Deployment](getting-started/deployment/README.md)
+  * [Vercel](getting-started/deployment/vercel.md)
+  * [Netlify](getting-started/deployment/netlify.md)
+  * [GitHub Pages](getting-started/deployment/github-pages.md)
+  * [DigitalOcean Apps](getting-started/deployment/digitalocean-apps.md)
+  * [FTP Hosting](getting-started/deployment/ftp-hosting.md)
 
 ## 👩🏫 Onboarding
 
