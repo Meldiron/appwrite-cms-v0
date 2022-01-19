@@ -15,7 +15,7 @@ AppwriteCMS is a ready-to-use CMS solution for any Appwrite project. With that s
 ### 💿 Download AppwriteCMS
 
 {% hint style="info" %}
-_Summary of an upcoming section_
+_Summary of an upcoming section:_
 
 1. Use [AppwriteCMS GitHub](https://github.com/Meldiron/appwrite-cms) as a template to fork it
 2. Clone your fork of AppwriteCMS to your PC
@@ -33,6 +33,30 @@ After a few seconds, you should see a similar website but now the green button s
 
 Last but not least, you need to download files of AppwriteCMS to your PC, so you can start editing them. You could do this in GitHub itself, but you won't be able to run the website locally, so you would be guessing if your changes are valid or not.
 
-To download files, you click the earlier mentioned `Code` button and either use GitHub Desktop or use URL and CLI command `git clone [URL]`. If you struggle with this point, you should check out YouTube videos about topic `Git and GitHub basics`.
+To download files, you click the earlier mentioned `Code` button and either use GitHub Desktop or use URL and CLI command `git clone [URL]`. If you struggle with this point, you should check out YouTube videos about the topic `Git and GitHub basics`.
 
 ### ⚡ Run AppwriteCMS locally
+
+{% hint style="info" %}
+_Summary of an upcoming section:_
+
+1. Instal dependencies `yarn -D`
+2. Run development server `yarn dev`
+3. Visit [localhost:3000](http://localhost:3000)
+{% endhint %}
+
+Running AppwriteCMS locally is as simple as a few commands in your terminal. First of all, after cloning the repository, you will need to install the required libraries in order for the project to work properly. To do that, we will be using [Yarn](https://yarnpkg.com) package manager. We install all dependencies using the following command:
+
+```bash
+$ yarn -D
+```
+
+After a while, everything will be downloaded and we can spin up the development server using the command below:
+
+```bash
+$ yarn dev
+```
+
+Make sure to keep the development command running in your terminal (don't close it) and visit the website [localhost:3000](http://localhost:3000) to see your AppwriteCMS. The CMS is most likely not working at all, but that is all expected since you have not configured it.
+
+Wohoo 🥳 we have successfully created our own copy of AppwriteCMS, downloaded it to our desktop and spinned-up the local server for ease of development in the future.
