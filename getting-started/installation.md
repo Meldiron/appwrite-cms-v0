@@ -1,5 +1,5 @@
 ---
-description: Simple step-by-step instructions to start using AppwriteCMS
+description: Simple step-by-step instructions to start using AppwriteCMS.
 ---
 
 # 💾 Installation

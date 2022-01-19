@@ -1,5 +1,5 @@
 ---
-description: Basic explanation of what AppwriteCMS is
+description: Basic explanation of what AppwriteCMS is.
 ---
 
 # 👋 Introduction
