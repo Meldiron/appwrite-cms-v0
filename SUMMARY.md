@@ -31,7 +31,3 @@
 * [🧱 List Block](components/list-block.md)
 * [🧱 Dashboard Block](components/dashboard-block.md)
 * [🧱 Presentation Block](components/presentation-block.md)
-
-## 📚 Technical Research
-
-* [Component-driven CMS](technical-research/component-driven-cms.md)

@@ -8,9 +8,9 @@ description: Simple step-by-step instructions to start using AppwriteCMS.
 
 AppwriteCMS is a ready-to-use CMS solution for any Appwrite project. With that said, AppwriteCMS needs to know where your project is hosted and what your database structure looks like. All of that can be easily configured in `config.json`, but to edit this file, you will need to set up AppwriteCMS locally.
 
-* [ ] Install NodeJS <mark style="color:blue;"></mark> <mark style="color:yellow;">(tested with NodeJS v16.13.0 and NPM v8.1.0)</mark>
-* [ ] Install yarn using `sudo npm i -g yarn` <mark style="color:yellow;">(tested with Yarn v1.22.5)</mark>
-* [ ] Install Git <mark style="color:blue;"></mark> <mark style="color:yellow;">(tested with Git v2.23.0)</mark>
+* [ ] Install NodeJS <mark style="color:blue;"></mark> <mark style="color:purple;">(tested with NodeJS v16.13.0 and NPM v8.1.0)</mark>
+* [ ] Install yarn using `sudo npm i -g yarn` <mark style="color:purple;">(tested with Yarn v1.22.5)</mark>
+* [ ] Install Git <mark style="color:blue;"></mark> <mark style="color:purple;">(tested with Git v2.23.0)</mark>
 
 ### 💿 Download AppwriteCMS
 
