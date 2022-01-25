@@ -335,7 +335,7 @@ View configuration explains what data are visible when displaying detail about o
 * `note` small text visible just below the form section of this attribute
 * `array` boolean specifying if this attribute is array or not
 
-Example of list action:
+Example of view action:
 
 ```json
 {
