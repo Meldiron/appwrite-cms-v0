@@ -8,6 +8,10 @@ AppwriteCMS was made with simplicity in mind. The whole configuration of Appwrit
 
 First, you open `static` folder, create `config.json` file in there, and open it in your favourite text editor. It's a plus if the editor supports JSON format, as it can mark if you create some syntax error by mistake. I would personally recommend using [Visual Studio Code](https://code.visualstudio.com).
 
+{% hint style="info" %}
+You can check out an [example config.json](https://github.com/Meldiron/appwrite-cms/blob/master/static/dev\_config.json) I created for my own project with three collections: authors, articles, and news. The example config includes groups, dashboard, panels and bunch of different blocks, such as rich text, image, date or relationship dropdown.
+{% endhint %}
+
 Once opened, let's fill it with (for now) empty JSON:
 
 {% code title="config.json" %}
