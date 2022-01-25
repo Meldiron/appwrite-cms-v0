@@ -259,6 +259,8 @@ Example of list action:
 }
 ```
 
+![List action configured](<../.gitbook/assets/CleanShot 2022-01-25 at 19.51.04.png>)
+
 To learn more about 'list' components, visit [List Blocks](../components/list-block.md) documentation.
 
 #### 'create' action configuration
@@ -310,6 +312,8 @@ Example of list action:
 }
 ```
 
+![Create action configured](<../.gitbook/assets/CleanShot 2022-01-25 at 19.51.00.png>)
+
 To learn more about 'create' components, visit [Form Blocks](../components/form-block.md) documentation.
 
 #### 'edit' action configuration
@@ -323,6 +327,8 @@ Edit configuration explains what inputs are there in the form when editing an ex
   }
 }
 ```
+
+![Edit action configured](<../.gitbook/assets/CleanShot 2022-01-25 at 19.51.11.png>)
 
 #### 'view' action configuration
 
@@ -368,5 +374,7 @@ Example of view action:
   }
 }
 ```
+
+![View action configured](<../.gitbook/assets/CleanShot 2022-01-25 at 19.51.23.png>)
 
 To learn more about 'view' components, visit [Detail Blocks](../components/detail-block.md) documentation.
