@@ -8,7 +8,20 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { AppwriteService } from '../../../services/appwrite'
+
 export default Vue.extend({
-  props: ['config', 'appwrite'],
+  props: {
+    appwrite: {
+      required: true,
+      type: Object as () => typeof AppwriteService,
+    },
+    config: {
+      required: true,
+      type: Object as () => {
+        value?: string
+      },
+    },
+  },
 })
 </script>

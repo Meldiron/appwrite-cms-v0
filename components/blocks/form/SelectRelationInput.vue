@@ -17,8 +17,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { AppwriteService } from '~/services/appwrite'
+import { AppwriteDocument } from '~/ts-shim'
+
 export default Vue.extend({
-  props: ['config', 'appwrite', 'document', 'documentValue'],
   methods: {
     async $output() {
       return this.value
@@ -27,10 +29,17 @@ export default Vue.extend({
   data() {
     return {
       value: this.documentValue,
-      options: [],
+      options: [] as { value: string; name: string }[],
     }
   },
   async created() {
+    if (!this.config.collection || !this.config.attribute) {
+      alert('Component FormSelectRelationInput not configured properly!')
+      return
+    }
+
+    const attribute = this.config.attribute
+
     const docs = await this.appwrite
       ._db()
       .listDocuments(this.config.collection, [], 100)
@@ -38,9 +47,30 @@ export default Vue.extend({
     this.options = docs.documents.map((doc: any) => {
       return {
         value: doc.$id,
-        name: doc[this.config.attribute],
+        name: doc[attribute],
       }
     })
+  },
+  props: {
+    appwrite: {
+      required: true,
+      type: Object as () => typeof AppwriteService,
+    },
+    document: {
+      required: true,
+      type: Object as () => AppwriteDocument,
+    },
+    documentValue: {
+      required: true,
+      type: Object as () => any,
+    },
+    config: {
+      required: true,
+      type: Object as () => {
+        collection?: string
+        attribute?: string
+      },
+    },
   },
 })
 </script>

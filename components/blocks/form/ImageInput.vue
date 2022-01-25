@@ -1,16 +1,7 @@
 <template>
   <div class="flex flex-col space-y-1">
     <div
-      class="
-        w-full
-        p-4
-        bg-white
-        border-4
-        rounded-md
-        border-slate-200
-        focus:outline-none focus:ring
-        ring-gray-600
-      "
+      class="w-full p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
     >
       <img
         v-if="file && file !== 'EMPTY'"
@@ -29,14 +20,7 @@
           class="flex items-center justify-center group"
         >
           <div
-            class="
-              p-3
-              text-sm
-              rounded-md
-              text-slate-800
-              group-hover:bg-slate-200
-              bg-slate-100
-            "
+            class="p-3 text-sm rounded-md  text-slate-800 group-hover:bg-slate-200 bg-slate-100"
           >
             Remove file
           </div>
@@ -49,8 +33,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import { AppwriteService } from '~/services/appwrite'
+import { AppwriteDocument } from '~/ts-shim'
+
 export default Vue.extend({
-  props: ['config', 'appwrite', 'document', 'documentValue'],
   methods: {
     getFileSrc(file: any) {
       if (typeof file === 'string') {
@@ -104,6 +89,26 @@ export default Vue.extend({
       didFileChange: false,
       file: file,
     }
+  },
+  props: {
+    appwrite: {
+      required: true,
+      type: Object as () => typeof AppwriteService,
+    },
+    document: {
+      required: true,
+      type: Object as () => AppwriteDocument,
+    },
+    documentValue: {
+      required: true,
+      type: Object as () => any,
+    },
+    config: {
+      required: true,
+      type: Object as () => {
+        // No config options yet
+      },
+    },
   },
 })
 </script>
