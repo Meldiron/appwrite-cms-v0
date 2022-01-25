@@ -60,3 +60,7 @@ $ yarn dev
 Make sure to keep the development command running in your terminal (don't close it) and visit the website [localhost:3000](http://localhost:3000) to see your AppwriteCMS. The CMS is most likely not working at all, but that is all expected since you have not configured it.
 
 Wohoo 🥳 we have successfully created our own copy of AppwriteCMS, downloaded it to our desktop and spinned-up the local server for ease of development in the future.
+
+![Login page of AppwriteCMS](<../.gitbook/assets/CleanShot 2022-01-25 at 19.58.00.png>)
+
+Your page probably does not look like this, because you have not configured it yet. Please continue to the next section to get your AppwriteCMS working with **your** Appwrite database.
