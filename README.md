@@ -8,42 +8,33 @@ Hey there 👋
 
 Happy to see you here... Since you are looking for Appwrite admin panel, you already know what Appwrite is, right... Right?!?!
 
-If for whatever reason you never heard about Appwrite, please check out their [Website](https://appwrite.io/) to learn more about Appwrite. Believe it or not, you can't use AppwriteCMS without Appwrite 😬
+If you never heard about Appwrite, please check out their [Website](https://appwrite.io/) to learn more about this amazing backend as a service. Believe it or not, you can't use AppwriteCMS without Appwrite 😬
 
 With that said...
 
-AppwriteCMS is headless CMS for your Appwrite database. Appwrite allows you to manage your database, but the view is too developer-ish and allows zero customization. In the end, it is a tool for developer, not copywriter... That's where AppwriteCMS comes into play! Connect AppwriteCMS to any Appwrite project and configure it as much as you need. AppwriteCMS even allows you to write your own components to achieve any interface your project needs. You can learn more in our [official documentation](https://meldiron-appwrite.gitbook.io/appwrite-cms/).
+Prepare admin panels for your projects rapidly using AppwriteCMS, a headless CMS for your Appwrite project.
+
+AppwriteCMS is headless CMS for your Appwrite database. Appwrite allows you to manage your database and files, but the UI is too developer-ish and allows zero customization. In the end, it is a tool for developer not copywriter, so noone ever expected to use Appwrite as CMS. That's where AppwriteCMS comes into play! Connect AppwriteCMS to your Appwrite project and configure it as much as you need. AppwriteCMS also allows you to write your own components to achieve any interface your project needs. You can learn more in our [official documentation](https://meldiron-appwrite.gitbook.io/appwrite-cms/).
 
 Oh, I almost forgot...
 
 I never liked when people miss-spell my name from Matej to Madžejč. Products feel the same! 🤖 Let's not offend them, okay?
 
-The correct spelling is `Appwrite`, not `AppWrite`. Just like that, this is product is called `AppwriteCMS`, not `Apppwrite CMS`, and absolutely not `AppWrite CMS`.
+The correct spelling is `Appwrite`, not `AppWrite`. Just like that, this is product is called `AppwriteCMS`, not `Apppwrite CMS`, and absolutely not `ApVrajt CMS`.
 
 Thanks for your attention open source community! See you later in GitHub issues section 👋
 
-## TODO
+## Documentation
 
-- Sort by attribute functionality
-- Multiselect delete in list
-- Array in list, somehow
-- Relationship components
-- Dashboard components (graphs, ...)
-- Dark theme
-- Responsibity
-- Write GitBook docs
-- Auth using email&password (custom cloud function)
-- Offset pagination option
-- Research cursor pagination (probably never before direction)
-- TODOS in code
+You can find bunch of resources in our official [GitBook](https://meldiron-appwrite.gitbook.io/appwrite-cms/) documentation.
 
 ## Contributing
 
-Fun fact, we are using Nuxt! 🥳 If you understand Vue, you are more than ready to start building components. If you don't, eh, you will figure it out 😅 Don't be scared, components are tiny HTML&CSS&JS snippets that only uses Vue to bind data between HTML an JavaScript.
+Fun fact, we are using Nuxt! 🥳 If you understand Vue, you are more than ready to start building components. If you don't, eh, you will figure it out 😅 Don't be scared, components are tiny HTML, CSS and JS snippets that only uses Vue to bind data between HTML an JavaScript. To see quick example, you can take a look at our [FormTextareaInput](https://github.com/Meldiron/appwrite-cms/blob/master/components/blocks/form/TextareaInput.vue).
 
-All code contributions - including those of people having commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
+All code external contributions must go through a pull request and be approved by a core developer team before being merged. This flow ensures a proper review of all the code and increases the quality of the product.
 
-We truly ❤️ pull requests! Refer to information below in order to understand how to setup&build the project and see how folder structore works.
+We truly ❤️ pull requests! Refer to information below and our [Contributing Guide](https://github.com/Meldiron/appwrite-cms/blob/master/CONTRIBUTING.md) in order to understand how to setup AppwriteCMS, build the project and see how folder structore works.
 
 ## Build Setup
 

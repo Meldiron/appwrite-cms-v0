@@ -29,7 +29,7 @@
   "panels": {
     "settings": {
       "description": "Website basic settings.",
-      "icon": "🛠",
+      "icon": "🧰",
       "groupId": null,
       "name": "Settings",
       "singleton": "61e3e740962363a6e7f5",
@@ -276,6 +276,19 @@
     },
 
     "blogAuthors": {
+      "labels": {
+        "only-published": {
+          "sorts": [],
+          "queries": [],
+          "name": "Only verified"
+        },
+        "only-drafts": {
+          "sorts": [],
+          "queries": [],
+          "name": "Only interns"
+        }
+      },
+
       "searchAttribute": "name",
       "description": "Authors of articles. Not news!",
       "icon": "👱‍♀️",
