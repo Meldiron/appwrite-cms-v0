@@ -1,5 +1,5 @@
 import { NuxtAxiosInstance } from "@nuxtjs/axios";
-import { Models } from "node-appwrite";
+import { Models } from "appwrite";
 
 declare module '@nuxt/types' {
     interface Context {

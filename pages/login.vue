@@ -42,21 +42,16 @@
             class="flex flex-col my-8 space-y-4"
           >
             <input
-              id="username"
-              autocomplete="username"
-              name="username"
-              type="text"
-              value="apiKey"
-              class="hidden"
+              v-model="email"
+              class="p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
+              type="email"
+              placeholder="E-mail"
             />
             <input
-              name="current-password"
-              autocomplete="current-password"
-              id="current-password"
-              v-model="apiKey"
+              v-model="password"
               class="p-4 bg-white border-4 rounded-md  border-slate-200 focus:outline-none focus:ring ring-gray-600"
               type="password"
-              placeholder="Project API Key"
+              placeholder="Password"
             />
             <button
               type="submit"
@@ -132,7 +127,8 @@ export default Vue.extend({
   data() {
     return {
       version: process.env.APPVERSION,
-      apiKey: '',
+      email: '',
+      password: '',
       isLoading: false,
     }
   },
@@ -144,7 +140,7 @@ export default Vue.extend({
 
       this.isLoading = true
 
-      const isSuccessful = await AppwriteService.login(this.apiKey)
+      const isSuccessful = await AppwriteService.login(this.email, this.password)
       if (isSuccessful) {
         this.$router.push('/app')
       }

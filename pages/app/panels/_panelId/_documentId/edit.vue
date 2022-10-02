@@ -28,6 +28,7 @@ export default Vue.extend({
 
   async created() {
     this.document = await AppwriteService.getDocument(
+      this.panel.databaseId,
       this.panelId,
       this.$route.params.documentId
     )

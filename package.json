@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev-win": "nuxt",
-    "dev": "npm run fix-appwrite && nuxt",
-    "build": "npm run fix-appwrite && nuxt generate",
-    "start": "npm run fix-appwrite nuxt start",
-    "generate": "npm run fix-appwrite && nuxt generate",
+    "dev": "nuxt",
+    "build": "nuxt generate",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "yarn lint:js",
-    "fix-appwrite": "cp _temp_appwrite_fix.txt node_modules/node-appwrite/lib/query.js && cp _temp_appwrite_fix2.txt node_modules/node-appwrite/lib/client.js"
+    "lint": "yarn lint:js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
@@ -18,10 +16,10 @@
     "@tiptap/vue-2": "^2.0.0-beta.75",
     "@types/marked": "^4.0.1",
     "@types/vue2-editor": "^2.6.1",
+    "appwrite": "^10.1.0",
     "axios": "^0.24.0",
     "core-js": "^3.15.1",
     "marked": "^4.0.8",
-    "node-appwrite": "^4.0.2",
     "nuxt": "^2.15.7",
     "vue2-editor": "^2.10.3",
     "vuex-module-decorators": "^2.0.0"

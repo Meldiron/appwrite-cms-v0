@@ -32,12 +32,10 @@ export default Vue.extend({
       resetUploader: any
     ) {
       console.log('Handling')
-      // TODO: Allow custom permissions and custom ID
+      // TODO: Allow custom permissions and custom ID custom bucket
       const appwriteFile = await this.appwrite.uploadFile(
         'unique()',
-        file,
-        ['role:all'],
-        []
+        file
       )
 
       Editor.insertEmbed(

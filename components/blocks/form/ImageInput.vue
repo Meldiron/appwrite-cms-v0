@@ -63,12 +63,10 @@ export default Vue.extend({
         if (this.file === 'EMPTY') {
           return ''
         } else {
-          // TODO: Allow cusotm ID, allow custon read&write permissions
+          // TODO: Allow cusotm ID, allow custon read&write permissions, custom bucket
           const fileResponse = await this.appwrite.uploadFile(
             'unique()',
-            this.file,
-            ['role:all'],
-            []
+            this.file
           )
 
           return fileResponse.$id

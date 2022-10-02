@@ -1,5 +1,5 @@
 import { ConfigType } from "~/store/config";
-import { Client, Database, Storage, Models } from "node-appwrite";
+import { Client, Databases, Storage, Models, Account, Permission, Role } from "appwrite";
 
 // @ts-ignore Because middleware sets this and noone ever loads data before middleware fills it
 let config: ConfigType = null;
@@ -12,7 +12,10 @@ export const AppwriteService = {
     },
 
     _db() {
-        return new Database(this.getAppwrite());
+        return new Databases(this.getAppwrite());
+    },
+    _acc() {
+        return new Account(this.getAppwrite());
     },
     _file() {
         return new Storage(this.getAppwrite());
@@ -27,10 +30,16 @@ export const AppwriteService = {
         }
 
         appwrite = new Client();
+
         appwrite
             .setEndpoint(config.appwrite.endpoint)
-            .setProject(config.appwrite.projectId)
-            .setKey(localStorage.getItem("API_KEY") || "INVALID_KEY");
+            .setProject(config.appwrite.projectId);
+
+
+        appwrite.headers = {
+            ...appwrite.headers,
+            'x-appwrite-mode': 'admin'
+        };
     },
 
     async createDocument(collectionId: string, dataObject: any): Promise<boolean> {
@@ -58,10 +67,9 @@ export const AppwriteService = {
         }
     },
 
-    async login(apiKey: string): Promise<boolean> {
+    async login(email: string, password: string): Promise<boolean> {
         try {
-            appwrite.setKey(apiKey);
-            localStorage.setItem("API_KEY", apiKey);
+            await this._acc().createEmailSession(email, password);
             await this.isLogged(true);
             return true;
         } catch (err: any) {
@@ -72,8 +80,8 @@ export const AppwriteService = {
 
     async logout(): Promise<boolean> {
         try {
-            appwrite.setKey("INVALID_KEY");
-            localStorage.setItem("API_KEY", "INVALID_KEY");
+            await this._acc().deleteSession('current');
+            await this.isLogged(true);
             return true;
         } catch (err: any) {
             alert(err.message);
@@ -83,7 +91,7 @@ export const AppwriteService = {
 
     async isLogged(throwError = false): Promise<boolean> {
         try {
-            await this._db().listCollections();
+            await this._acc().get();
             return true;
         }
         catch (err: any) {
@@ -94,15 +102,17 @@ export const AppwriteService = {
         }
     },
 
-    async getDocument(collectionId: string, documentId: string): Promise<any & Models.Document> {
-        return await this._db().getDocument(collectionId, documentId);
+    async getDocument(databaseId: string, collectionId: string, documentId: string): Promise<any & Models.Document> {
+        return await this._db().getDocument(databaseId, collectionId, documentId);
     },
 
     previewFile(fileId: string): string {
         return config.appwrite.endpoint + '/storage/files/' + fileId + '/view?project=' + config.appwrite.projectId + '&width=500&output=webp&gravity=center';
     },
 
-    async uploadFile(fileId: string, file: any, read: string[], write: string[]) {
-        return await this._file().createFile.bind(this._file())(fileId, file, read, write);
+    async uploadFile(fileId: string, file: any) {
+        return await this._file().createFile.bind(this._file())('default', fileId, file, [
+            Permission.read(Role.any())
+        ]);
     }
 }

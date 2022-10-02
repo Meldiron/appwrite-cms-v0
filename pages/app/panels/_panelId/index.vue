@@ -255,35 +255,41 @@ export default Vue.extend({
 
       const documentsBackup = [...this.documents]
 
-      const orderAttributes: string[] = []
-      const orderTypes: string[] = []
-
-      if (this.label) {
-        for (const orderKey in this.label.sorts) {
-          orderAttributes.push(orderKey)
-          orderTypes.push(this.label.sorts[orderKey])
-        }
-      }
-
       const queries = this.label ? [...this.label.queries] : []
 
       if (this.searchText) {
         const queryConfig = this.panel.searchAttribute
-        queries.push(`${queryConfig}.search('${this.searchText}')`)
+        queries.push(`search('${queryConfig}', '${this.searchText}')`)
+      }
+
+      queries.push('limit(' + (this.currentlySelectedLimit + 1) + ')');
+
+      if(this.cursorDirection) {
+        if(this.cursorDirection === 'after') {
+          queries.push('cursorAfter("' + this.cursor + '")');
+        } else {
+          queries.push('cursorBefore("' + this.cursor + '")');
+      }
+
+      if (this.label) {
+        for (const orderKey in this.label.sorts) {
+          const orderType = this.label.sorts[orderKey];
+
+          if(orderType === 'DESC') {
+            queries.push('orderDesc("' + orderKey + '")');
+          } else {
+            queries.push('orderAsc("' + orderKey + '")');
+          }
+        }
       }
 
       const appwriteResponse = await AppwriteService._db().listDocuments(
+        this.panel.database,
         this.panelId,
-        queries,
-        this.currentlySelectedLimit + 1,
-        undefined,
-        this.cursor,
-        this.cursorDirection,
-        orderAttributes,
-        orderTypes
+        queries
       )
 
-      this.documentsSum = appwriteResponse.sum
+      this.documentsSum = appwriteResponse.total
 
       if (this.cursorDirection === 'after') {
         this.hasPrevious = this.cursor ? true : false

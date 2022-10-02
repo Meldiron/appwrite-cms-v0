@@ -33,7 +33,7 @@ export default Vue.extend({
     }
   },
   async created() {
-    if (!this.config.collection || !this.config.attribute) {
+    if (!this.config.database || !this.config.collection || !this.config.attribute) {
       alert('Component FormSelectRelationInput not configured properly!')
       return
     }
@@ -42,7 +42,7 @@ export default Vue.extend({
 
     const docs = await this.appwrite
       ._db()
-      .listDocuments(this.config.collection, [], 100)
+      .listDocuments(this.config.database, this.config.collection, [ 'limit(100)' ])
 
     this.options = docs.documents.map((doc: any) => {
       return {
@@ -67,6 +67,7 @@ export default Vue.extend({
     config: {
       required: true,
       type: Object as () => {
+        database?: string
         collection?: string
         attribute?: string
       },

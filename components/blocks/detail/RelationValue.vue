@@ -18,14 +18,14 @@ export default Vue.extend({
     }
   },
   async created() {
-    if (!this.config.collection || !this.config.attribute) {
+    if (!this.config.database || !this.config.collection || !this.config.attribute) {
       alert('Component DetailRelationValue not configured properly!')
       return
     }
 
     const doc: any = await this.appwrite
       ._db()
-      .getDocument(this.config.collection, this.documentValue)
+      .getDocument(this.config.database, this.config.collection, this.documentValue)
     this.relatedValue = doc[this.config.attribute]
   },
   props: {
@@ -44,6 +44,7 @@ export default Vue.extend({
     config: {
       required: true,
       type: Object as () => {
+        database?: string
         collection?: string
         attribute?: string
       },
